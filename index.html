@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fazenda Art Café brings authentic Italian coffee, deli classics, and community art evenings to London near Liverpool Street." />
-  <title>Fazenda Art Café | Italian Coffee & Creativity in London</title>
+  <meta name="description" content="Fazenda is a family-run Italian café and coffee shop at 9 Harrow Place, London E1 7DB, also home to weekly Art Café creative sessions." />
+  <title>Fazenda | Italian Café & Coffee Shop in London</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,11 +20,12 @@
       --terracotta: #d36b46;
       --terracotta-dark: #b55836;
       --sand: #e8e2d5;
-      --text-muted: #5c5147;
+      --text: #40352d;
+      --muted: #6b5d53;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
-      --radius: 12px;
-      --transition: 0.3s ease;
+      --radius: 18px;
+      --transition: 0.25s ease;
     }
 
     *, *::before, *::after {
@@ -39,12 +40,12 @@
 
     body {
       font-family: var(--font-sans);
-      color: var(--espresso);
-      background: var(--crema);
-      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--crema);
       min-height: 100vh;
-      padding-top: 92px;
       overflow-x: hidden;
+      padding-top: 96px;
+      line-height: 1.7;
     }
 
     img {
@@ -59,9 +60,9 @@
 
     button,
     .btn {
-      border: none;
       font: inherit;
       cursor: pointer;
+      border: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -71,7 +72,7 @@
     button:focus-visible,
     a:focus-visible {
       outline: 3px solid var(--sage);
-      outline-offset: 3px;
+      outline-offset: 4px;
     }
 
     .container {
@@ -81,90 +82,82 @@
 
     .section-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 2.6vw, 3.25rem);
-      margin-bottom: 1rem;
-      color: var(--espresso);
+      font-size: clamp(2.4rem, 2.6vw, 3.5rem);
+      margin-bottom: 0.9rem;
       line-height: 1.05;
     }
 
     .section-subtitle {
       display: inline-block;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       color: var(--terracotta);
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
-    .section-description {
-      color: var(--text-muted);
-      max-width: 640px;
+    .section-text,
+    .section-caption {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .section-caption {
       margin-top: 0.5rem;
+      font-size: 0.97rem;
       line-height: 1.75;
     }
 
     .btn {
       padding: 1rem 1.8rem;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-size: 0.85rem;
     }
 
     .btn-primary {
-      background-color: var(--terracotta);
-      color: #fff;
-      border: 2px solid var(--terracotta);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--terracotta-dark);
-      border-color: var(--terracotta-dark);
-      transform: translateY(-2px);
-    }
-
-    .btn-sage {
-      background-color: var(--espresso);
+      background: var(--espresso);
       color: var(--crema);
       border: 2px solid var(--espresso);
     }
 
-    .btn-sage:hover {
-      background-color: var(--crema);
+    .btn-primary:hover {
+      background: var(--sage);
       color: var(--espresso);
       transform: translateY(-2px);
     }
 
-    .btn-outline {
-      background-color: transparent;
-      color: var(--crema);
-      border: 2px solid var(--crema);
+    .btn-secondary {
+      background: transparent;
+      color: var(--espresso);
+      border: 2px solid var(--espresso);
     }
 
-    .btn-outline:hover {
-      background-color: var(--crema);
-      color: var(--espresso);
+    .btn-secondary:hover {
+      background: var(--espresso);
+      color: var(--crema);
+      transform: translateY(-2px);
     }
 
     nav {
       position: fixed;
-      inset: 0 0 auto;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       padding: 1.25rem 0;
       transition: padding var(--transition), background-color var(--transition), box-shadow var(--transition);
-      width: 100%;
     }
 
     nav.scrolled {
-      background-color: rgba(43, 30, 22, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      background-color: rgba(249, 246, 240, 0.96);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
     }
 
-    .nav-container {
+    .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -173,7 +166,6 @@
 
     .logo img {
       height: 56px;
-      width: auto;
       filter: brightness(0) invert(1);
       transition: transform var(--transition);
     }
@@ -184,18 +176,18 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
       align-items: center;
       flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: var(--crema);
-      font-size: 0.88rem;
-      font-weight: 500;
+      color: var(--espresso);
+      font-size: 0.9rem;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       transition: color var(--transition);
     }
 
@@ -204,332 +196,293 @@
     }
 
     .hero {
-      min-height: calc(100vh - 92px);
+      min-height: calc(100vh - 96px);
       display: grid;
       align-items: center;
-      background: linear-gradient(180deg, rgba(43, 30, 22, 0.78) 0%, rgba(43, 30, 22, 0.9) 100%),
-        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center/cover;
+      background: linear-gradient(180deg, rgba(43, 30, 22, 0.75), rgba(43, 30, 22, 0.82)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2000&auto=format&fit=crop') center/cover;
       color: var(--crema);
-      padding: 5rem 0 4rem;
+      padding: 4.5rem 0 5rem;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1rem;
+      display: inline-block;
     }
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-size: clamp(3.5rem, 7vw, 5.75rem);
       line-height: 0.95;
       margin-bottom: 1.5rem;
       max-width: 10ch;
     }
 
     .hero-title em {
-      color: var(--sage);
       font-style: italic;
+      color: var(--sage);
     }
 
-    .hero-text {
-      max-width: 640px;
-      font-size: 1.15rem;
+    .hero-copy {
+      max-width: 650px;
+      font-size: 1.1rem;
       font-weight: 300;
       margin-bottom: 2.5rem;
-      opacity: 0.95;
+      color: rgba(249, 246, 240, 0.95);
     }
 
-    .hero-buttons {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+    }
+
+    .section-hero-cards {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 3rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 1.5rem;
+      border-radius: 18px;
+      backdrop-filter: blur(8px);
+      color: #f7efe4;
+      min-height: 150px;
+    }
+
+    .hero-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--sage);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      font-size: 0.95rem;
+      color: rgba(249, 246, 240, 0.9);
+      line-height: 1.7;
     }
 
     section {
       padding: 6rem 0;
     }
 
-    .about {
-      background-color: var(--crema);
-    }
-
-    .about-grid,
-    .art-grid,
-    .footer-grid {
+    .section-split {
       display: grid;
-      gap: 3rem;
-    }
-
-    .about-grid {
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
       align-items: center;
     }
 
-    .about-image img {
+    .about-panel {
+      padding: 3rem;
+      background: #fff;
       border-radius: var(--radius);
-      box-shadow: -20px 20px 0 var(--sage);
+      box-shadow: 0 26px 56px rgba(45, 30, 16, 0.08);
     }
 
-    .about-text p {
-      margin-bottom: 1.4rem;
-      color: var(--text-muted);
-      font-size: 1.03rem;
+    .about-panel h3 {
+      font-size: 1rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.8rem;
     }
 
-    .menu {
-      background-color: var(--sand);
+    .about-panel p,
+    .about-panel li {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
-    .menu-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .menu-header p {
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-    }
-
-    .menu-grid {
+    .about-panel ul {
+      list-style: none;
+      padding-left: 0;
       display: grid;
-      gap: 2.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.75rem;
     }
 
-    .menu-category h3 {
-      font-family: var(--font-serif);
-      font-size: 1.75rem;
-      color: var(--terracotta);
-      margin-bottom: 1.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--sage);
+    .about-panel li::before {
+      content: '\2022';
+      margin-right: 0.75rem;
+      color: var(--sage);
     }
 
-    .menu-item {
-      margin-bottom: 1.75rem;
+    .overview-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 2rem;
     }
 
-    .menu-item-header {
+    .overview-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid rgba(43, 30, 22, 0.08);
+      padding: 1.75rem;
+      box-shadow: 0 18px 40px rgba(45, 30, 16, 0.05);
+    }
+
+    .overview-card h4 {
+      margin-bottom: 0.85rem;
+      color: var(--espresso);
+      font-size: 1rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .overview-card p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .menu-preview,
+    .event-preview {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .menu-row,
+    .event-row {
       display: flex;
-      justify-content: space-between;
       gap: 1rem;
-      align-items: baseline;
-      margin-bottom: 0.35rem;
       flex-wrap: wrap;
     }
 
-    .menu-item-name {
-      font-weight: 600;
-      font-size: 1.08rem;
-      line-height: 1.3;
-    }
-
-    .menu-item-name.highlight {
-      color: var(--terracotta);
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-style: italic;
-    }
-
-    .menu-item-price,
-    .price-tag {
-      font-weight: 600;
-      color: var(--espresso);
-      background-color: var(--sage);
-      padding: 0.15rem 0.65rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-
-    .price-tag {
-      background: none;
-      color: var(--terracotta);
-      padding: 0;
-    }
-
-    .menu-item-desc {
-      color: #5c5147;
-      font-size: 0.96rem;
-      line-height: 1.6;
-    }
-
-    .dietary {
-      font-size: 0.78rem;
-      color: var(--terracotta-dark);
-      font-weight: 600;
-      margin-left: 0.5rem;
-    }
-
-    .catering {
-      background-color: var(--sage);
-      color: var(--espresso);
-      text-align: center;
-    }
-
-    .catering .section-subtitle {
-      color: var(--espresso);
-    }
-
-    .catering-content p {
-      max-width: 720px;
-      margin: 0 auto 2rem;
-      color: var(--espresso);
-      font-size: 1.1rem;
-    }
-
-    .art-cafe {
-      background-color: var(--espresso);
-      color: var(--crema);
-      position: relative;
-    }
-
-    .art-cafe .section-title,
-    .art-cafe .section-subtitle {
-      color: var(--crema);
-    }
-
-    .art-cafe .section-subtitle {
-      color: var(--sage);
-    }
-
-    .art-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      align-items: start;
-    }
-
-    .art-grid > div:first-child {
-      padding-right: 1rem;
-    }
-
-    .ticket-card {
-      background-color: var(--crema);
-      color: var(--espresso);
-      padding: 2.5rem;
+    .menu-item-card,
+    .event-card {
+      background: #fff;
       border-radius: var(--radius);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
-      position: relative;
+      padding: 1.5rem;
+      border: 1px solid rgba(43, 30, 22, 0.08);
+      flex: 1 1 220px;
+      min-width: 220px;
+      box-shadow: 0 14px 32px rgba(45, 30, 16, 0.06);
     }
 
-    .ticket-card::before,
-    .ticket-card::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 28px;
-      height: 28px;
-      background-color: var(--espresso);
-      border-radius: 50%;
-      transform: translateY(-50%);
+    .menu-item-card h4,
+    .event-card h4 {
+      color: var(--espresso);
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
     }
 
-    .ticket-card::before { left: -14px; }
-    .ticket-card::after { right: -14px; }
-
-    .ticket-header {
-      text-align: center;
-      border-bottom: 2px dashed rgba(43, 30, 22, 0.15);
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .ticket-header h4 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      color: var(--terracotta);
-      margin-bottom: 0.35rem;
-    }
-
-    .ticket-detail {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
+    .menu-item-card p,
+    .event-card p {
+      color: var(--muted);
+      line-height: 1.7;
       margin-bottom: 1rem;
-      font-weight: 500;
-      color: #4c4038;
     }
 
-    .ticket-detail i {
-      color: var(--sage);
-      width: 24px;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-
-    .ticket-price {
-      text-align: center;
-      font-size: 1.85rem;
-      font-family: var(--font-serif);
+    .menu-item-card .price,
+    .event-card .meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       font-weight: 700;
       color: var(--terracotta);
-      margin-top: 1.5rem;
-      line-height: 1.2;
     }
 
-    footer {
+    .event-highlight {
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      background: var(--sage);
+      color: var(--espresso);
+      box-shadow: 0 18px 40px rgba(45, 30, 16, 0.1);
+    }
+
+    .event-highlight h3 {
+      margin-bottom: 1rem;
+    }
+
+    .event-highlight p {
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    .footer {
       background-color: #1a120a;
-      color: #a49a8f;
+      color: #c1b5a9;
       padding: 5rem 0 2.5rem;
     }
 
     .footer-grid {
-      grid-template-columns: 1.6fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
     }
 
     .footer-brand img {
-      height: 56px;
+      height: 60px;
       margin-bottom: 1.25rem;
       filter: brightness(0) invert(1);
-      opacity: 0.9;
     }
 
     .footer-heading {
       color: var(--sage);
-      font-weight: 600;
+      margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 1rem;
       font-size: 0.92rem;
+      font-weight: 700;
     }
 
-    .footer-contact {
-      display: grid;
-      gap: 1rem;
+    .footer-contact,
+    .footer-links {
       list-style: none;
       padding: 0;
+      display: grid;
+      gap: 1rem;
     }
 
-    .footer-contact li {
+    .footer-contact li,
+    .footer-links li {
       display: flex;
+      gap: 0.8rem;
       align-items: flex-start;
-      gap: 0.75rem;
-      color: #cbbfae;
+      color: #c1b5a9;
+      line-height: 1.8;
     }
 
-    .footer-contact i {
-      margin-top: 4px;
+    .footer-contact i,
+    .footer-links i {
       color: var(--terracotta);
       min-width: 24px;
       text-align: center;
-    }
-
-    .footer-contact a {
-      color: inherit;
+      margin-top: 2px;
     }
 
     .footer-bottom {
       text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 1.75rem;
       font-size: 0.85rem;
       color: #8f847a;
     }
 
     @media (max-width: 980px) {
-      .about-grid,
-      .art-grid,
+      .section-split,
       .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .art-grid > div:first-child {
-        padding-right: 0;
+      .hero-card {
+        min-height: auto;
       }
     }
 
@@ -538,274 +491,217 @@
         padding-top: 112px;
       }
 
-      nav {
-        padding: 0.9rem 0;
-      }
-
       .nav-links {
         display: none;
       }
 
-      .hero {
-        padding-top: 4.5rem;
-        padding-bottom: 3rem;
-      }
-
       .hero-title {
-        font-size: 2.9rem;
+        font-size: 3rem;
       }
 
-      .menu-grid,
-      .footer-grid {
-        gap: 2rem;
+      .hero-actions,
+      .section-hero-cards,
+      .menu-row,
+      .event-row,
+      .overview-grid {
+        display: block;
       }
     }
   </style>
 </head>
 <body>
   <nav id="navbar" aria-label="Primary navigation">
-    <div class="container nav-container">
-      <a href="#" class="logo" aria-label="Fazenda Art Café home">
-        <img src="https://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda crest logo" />
+    <div class="container nav-inner">
+      <a href="#" class="logo" aria-label="Fazenda home">
+        <img src="https://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda logo" />
       </a>
       <ul class="nav-links">
-        <li><a href="#about">Our Story</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#art-cafe">Art Café</a></li>
-        <li><a href="#catering">Catering</a></li>
-        <li><a href="#location">Find Us</a></li>
+        <li><a href="#art-cafe">Events</a></li>
+        <li><a href="#contact">Visit</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero">
-    <div class="container">
-      <span class="section-subtitle" style="color: var(--sage);">Est. London</span>
-      <h1 class="hero-title">Authentic Italian Taste.<br /><em>Creative Spirit.</em></h1>
-      <p class="hero-text">A lovely family-run Italian deli and coffee shop by day, and a vibrant creative studio by night. Tucked away near Liverpool Street.</p>
-      <div class="hero-buttons">
-        <a href="#menu" class="btn btn-primary">View Menus</a>
-        <a href="#art-cafe" class="btn btn-outline">Join Art Café</a>
+    <div class="container hero-content">
+      <span class="hero-eyebrow">Italian café & coffee shop</span>
+      <h1 class="hero-title">Fazenda — Warm coffee, Italian flavor, creative evenings.</h1>
+      <p class="hero-copy">A family-run café near Liverpool Street, blending classic Italian coffee, cakes and deli-style dishes with Monday night Art Café creative gatherings.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">Explore the Menu</a>
+        <a href="#art-cafe" class="btn btn-secondary">Book a Session</a>
+      </div>
+
+      <div class="section-hero-cards" aria-label="Fazenda key details">
+        <div class="hero-card">
+          <h4>Location</h4>
+          <p>9 Harrow Place, London E1 7DB — tucked beside Liverpool Street for easy weekday coffee runs.</p>
+        </div>
+        <div class="hero-card">
+          <h4>Hours</h4>
+          <p>Mon–Sat 9:00 am – 3:00 pm (opening hours to be confirmed for special events and weekends).</p>
+        </div>
+        <div class="hero-card">
+          <h4>Art Studio Nights</h4>
+          <p>Every Monday from 18:30–20:30, the café becomes Art Café x Fazenda with creative sessions and a free drink included.</p>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
-    <section id="about" class="about">
-      <div class="container about-grid">
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Barista pouring Italian espresso" />
+    <section id="about">
+      <div class="container section-split">
+        <div>
+          <span class="section-subtitle">Our story</span>
+          <h2 class="section-title">A neighbourhood café with Italian heart and local spirit.</h2>
+          <p class="section-text">Fazenda is a family-run Italian café and coffee shop led by Antonio and Luca, inspired by their earlier Spitalfields location and a love for homemade food, artisan coffee and community hospitality.</p>
+          <p class="section-caption">This London café honours the warm, informal dining experience of a small Italian deli, bringing authentic coffee, cakes, and fresh deli plates to the heart of East London.</p>
         </div>
-        <div class="about-text">
-          <span class="section-subtitle">Family Roots</span>
-          <h2 class="section-title">From Spitalfields to Harrow Place.</h2>
-          <p>Brought to London many years ago, Fazenda is an independent, family-run business led by Antonio and Luca. We started our journey in Spitalfields at Leyden Street, pouring our passion for traditional Italian hospitality into every cup.</p>
-          <p>Today, located just steps from Liverpool Street, we continue to serve rich, aromatic coffees, deli-style lunches, and signature cakes that are nothing short of irresistible.</p>
-          <p>But we are more than just a café. We believe in community. That’s why our doors stay open on Mondays for artists, thinkers, and friends to gather, create, and connect.</p>
+
+        <div class="about-panel">
+          <h3>What makes Fazenda different</h3>
+          <ul>
+            <li>Family-owned café with a relaxed Italian atmosphere.</li>
+            <li>Carefully brewed espresso, flat whites and signature coffee cakes.</li>
+            <li>Classic deli plates, fresh pastries and seasonal light lunches.</li>
+            <li>Art Café creative evenings every Monday with local makers.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section id="menu" class="menu">
       <div class="container">
-        <div class="menu-header">
-          <span class="section-subtitle">Food & Drink</span>
-          <h2 class="section-title">Crafted Daily.</h2>
-          <p class="section-description">A true taste of Italy in the heart of East London, served with warmth, freshness, and a little artistic flair.</p>
+        <span class="section-subtitle">Menu preview</span>
+        <h2 class="section-title">Coffee, cakes and simple Italian plates.</h2>
+        <p class="section-caption">Menu items are based on available Fazenda details and curated for an authentic Italian café experience. Confirmed favourites include signature tiramisu, coffee cake, flat whites and comforting deli plates.</p>
+
+        <div class="overview-grid">
+          <div class="overview-card">
+            <h4>Espresso & Coffee</h4>
+            <p>Classic espresso, macchiato, latte, flat white, cappuccino and a selection of loose leaf teas, all brewed with rich Italian-style beans.</p>
+          </div>
+          <div class="overview-card">
+            <h4>Pastries & Cakes</h4>
+            <p>Fresh baked cornetti, almond cantuccini, toasted panettone, signature tiramisu cake and coffee cake made in-house.</p>
+          </div>
+          <div class="overview-card">
+            <h4>Deli & Light Plates</h4>
+            <p>Focaccia sandwiches, homemade lasagna, soup of the day and vegetarian panini options that feel like a deli lunch in Italy.</p>
+          </div>
         </div>
 
-        <div class="menu-grid">
-          <div class="menu-category">
-            <h3>The Espresso Bar</h3>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Classic Espresso / Macchiato</span>
-                <span class="menu-item-price">£2.60</span>
-              </div>
-              <p class="menu-item-desc">Rich, aromatic, and traditionally pulled short.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Smooth Latte</span>
-                <span class="menu-item-price">£3.50</span>
-              </div>
-              <p class="menu-item-desc">Espresso balanced with velvety steamed milk.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Flat White</span>
-                <span class="menu-item-price">£3.30</span>
-              </div>
-              <p class="menu-item-desc">Double ristretto topped with fine microfoam.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Loose Leaf Teas & Infusions</span>
-                <span class="menu-item-price">£2.80</span>
-              </div>
-              <p class="menu-item-desc">Earl Grey, Peppermint, Chamomile, and English Breakfast.</p>
-            </div>
-          </div>
-
-          <div class="menu-category">
-            <h3>Morning Bakery</h3>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Italian Cornetti</span>
-                <span class="menu-item-price">£3.00</span>
-              </div>
-              <p class="menu-item-desc">Freshly baked. Plain, crema, or filled with rich pistachio.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Almond Cantuccini</span>
-                <span class="menu-item-price">£2.50</span>
-              </div>
-              <p class="menu-item-desc">Twice-baked almond biscuits, perfect for dipping in your cappuccino.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Toasted Panettone</span>
-                <span class="menu-item-price">£4.00</span>
-              </div>
-              <p class="menu-item-desc">Served warm with a side of sweet mascarpone butter.</p>
-            </div>
-          </div>
-
-          <div class="menu-category">
-            <h3>Deli & Panini</h3>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Focaccia Parma</span>
-                <span class="menu-item-price">£6.50</span>
-              </div>
-              <p class="menu-item-desc">Prosciutto di Parma, buffalo mozzarella, rocket, and extra virgin olive oil.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Ciabatta Verdure <span class="dietary">[V]</span></span>
-                <span class="menu-item-price">£5.80</span>
-              </div>
-              <p class="menu-item-desc">Grilled aubergine, zucchini, sun-dried tomato pesto, and provolone.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Antonio’s Classic Lasagna</span>
-                <span class="menu-item-price">£8.50</span>
-              </div>
-              <p class="menu-item-desc">Hearty, homemade beef ragu layered with fresh pasta and béchamel.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name">Zuppa del Giorno</span>
-                <span class="menu-item-price">£5.00</span>
-              </div>
-              <p class="menu-item-desc">Freshly prepared soup of the day served with crusty sourdough.</p>
-            </div>
-          </div>
-
-          <div class="menu-category">
-            <h3>Signature Cakes</h3>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name highlight">Antonio's Tiramisu Cake</span>
-                <span class="price-tag">£5.50</span>
-              </div>
-              <p class="menu-item-desc">Our signature dessert. Indulgent, bursting with classic tiramisu flavor with a unique twist.</p>
-            </div>
-            <div class="menu-item">
-              <div class="menu-item-header">
-                <span class="menu-item-name highlight">Aromatic Coffee Cake</span>
-                <span class="price-tag">£4.80</span>
-              </div>
-              <p class="menu-item-desc">Rich and perfectly spiced, designed to pair flawlessly with an afternoon flat white.</p>
-            </div>
-          </div>
+        <div class="menu-row">
+          <article class="menu-item-card">
+            <h4>Fazenda espresso bar</h4>
+            <p>Authentic small-batch espresso made with care, plus smooth flat whites and special coffee blends designed for busy London mornings.</p>
+            <span class="price">From £2.60</span>
+          </article>
+          <article class="menu-item-card">
+            <h4>Signature cakes</h4>
+            <p>Antonio’s Tiramisu Cake and Aromatic Coffee Cake are the sweet highlights, perfect with a creamy latte or poured espresso.</p>
+            <span class="price">From £4.80</span>
+          </article>
+          <article class="menu-item-card">
+            <h4>Light deli dishes</h4>
+            <p>Fresh focaccia fillings, a seasonal soup, and comforting baked lasagna—ideal for a leisurely lunch close to the office.</p>
+            <span class="price">From £5.00</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="catering" class="catering">
-      <div class="container catering-content">
-        <span class="section-subtitle">Bring Fazenda to You</span>
-        <h2 class="section-title">Office Lunches & Private Hire</h2>
-        <p>Located right by Liverpool Street, we are perfectly positioned to provide authentic Italian catering for your next office meeting, corporate lunch, or private event. From large focaccia platters to bespoke dessert selections, let our family feed yours.</p>
-        <a href="mailto:ciao@fazenda.london" class="btn btn-sage">Enquire About Catering</a>
+    <section id="art-cafe" class="event-highlight">
+      <div class="container">
+        <span class="section-subtitle">Art Café</span>
+        <h2 class="section-title">Open Studio Night at Fazenda</h2>
+        <p>Fazenda becomes a creative space every Monday evening. The Art Café brings people together for art-making, conversation and a relaxed social experience with coffee included.</p>
+        <p class="section-text">Tickets are available on Eventbrite or at the café. The session includes all art materials plus a complimentary drink.</p>
+
+        <div class="event-row">
+          <div class="event-card">
+            <h4>Weekly creative session</h4>
+            <p>Every Monday, 18:30–20:30</p>
+            <p class="meta"><i class="fa-regular fa-calendar"></i> Monday evenings</p>
+            <p class="meta"><i class="fa-solid fa-clock"></i> 18:30 – 20:30</p>
+          </div>
+          <div class="event-card">
+            <h4>Location & price</h4>
+            <p>9 Harrow Place, London E1 7DB</p>
+            <p class="meta"><i class="fa-solid fa-pound-sign"></i> £15 includes a complimentary drink</p>
+          </div>
+          <div class="event-card">
+            <h4>What to expect</h4>
+            <p>A friendly studio atmosphere, collage and painting activities, and a community of creatives with a love for coffee and conversation.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <a href="https://eventbrite.com" target="_blank" rel="noreferrer noopener" class="btn btn-primary">Reserve Your Seat</a>
+        </div>
       </div>
     </section>
 
-    <section id="art-cafe" class="art-cafe">
-      <div class="container art-grid">
+    <section id="contact">
+      <div class="container section-split">
         <div>
-          <span class="section-subtitle">Weekly Sessions</span>
-          <h2 class="section-title">Open Studio Night at <em>Art Café</em></h2>
-          <p class="section-description">"Making art is good, making it with others is better." Every Monday evening, Fazenda transforms. We push the tables together, bring out the supplies, and host our open studio sessions.</p>
-          <p>Whether you're into collage, painting, or just want to doodle while chatting with the local community, there is a seat for you.</p>
-          <a href="https://eventbrite.com" target="_blank" rel="noreferrer noopener" class="btn btn-primary">Book Your Spot</a>
+          <span class="section-subtitle">Visit Fazenda</span>
+          <h2 class="section-title">Come for coffee, stay for community.</h2>
+          <p class="section-text">Fazenda is a lovely little Italian café near Liverpool Street, driven by family values and a passion for simple, authentic food. Drop in for a morning espresso, a lunchtime sandwich, or join us for a creative evening.</p>
         </div>
 
-        <article class="ticket-card" aria-label="Art Café session details">
-          <div class="ticket-header">
-            <h4>Art Café x Fazenda</h4>
-            <p>Weekly Creative Session</p>
+        <div class="about-panel">
+          <h3>Contact & opening details</h3>
+          <ul>
+            <li><strong>Address:</strong> 9 Harrow Place, London E1 7DB</li>
+            <li><strong>Phone:</strong> +44 20 7375 0577</li>
+            <li><strong>Email:</strong> ciao@fazenda.london</li>
+            <li><strong>Hours:</strong> Mon–Sat 9:00 am – 3:00 pm (tbc)</li>
+            <li><strong>Website:</strong> <a href="https://www.fazenda.london">fazenda.london</a></li>
+          </ul>
+          <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="mailto:ciao@fazenda.london" class="btn btn-secondary">Email Us</a>
+            <a href="tel:+442073750577" class="btn btn-primary">Call Fazenda</a>
           </div>
-          <div class="ticket-detail">
-            <i class="fa-regular fa-calendar" aria-hidden="true"></i>
-            <span>Every Monday Evening</span>
-          </div>
-          <div class="ticket-detail">
-            <i class="fa-regular fa-clock" aria-hidden="true"></i>
-            <span>18:30 – 20:30</span>
-          </div>
-          <div class="ticket-detail">
-            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            <span>9 Harrow Place, London E1 7DB</span>
-          </div>
-          <div class="ticket-price">
-            £15.00<br />
-            <span style="font-size: 0.9rem; font-family: var(--font-sans); font-weight: 500; color: #666;">(Includes a complimentary drink)</span>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer id="location">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="https://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda crest" />
-          <p>A lovely little Italian food & coffee shop near Liverpool Street. Built on family tradition, fueled by community.</p>
-        </div>
-
-        <div>
-          <h3 class="footer-heading">Visit Us</h3>
-          <ul class="footer-contact">
-            <li><i class="fa-solid fa-map-pin" aria-hidden="true"></i><span>9 Harrow Place<br />London E1 7DB<br />UK</span></li>
-            <li><i class="fa-regular fa-clock" aria-hidden="true"></i><span>Mon – Sat: 9:00 am – 3:00 pm<br />(Evening events on Mondays)</span></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="footer-heading">Get in Touch</h3>
-          <ul class="footer-contact">
-            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:ciao@fazenda.london">ciao@fazenda.london</a></li>
-            <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+442073750577">+44 20 7375 0577</a></li>
-            <li><i class="fa-solid fa-globe" aria-hidden="true"></i><a href="https://www.fazenda.london">fazenda.london</a></li>
-          </ul>
-        </div>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="https://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda crest" />
+        <p>A family-run Italian café with coffee, cakes, deli-style dishes and art evenings in the heart of East London.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Fazenda Art Café. All Rights Reserved.</p>
+      <div>
+        <h3 class="footer-heading">Location</h3>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-map-pin" aria-hidden="true"></i><span>9 Harrow Place<br />London E1 7DB</span></li>
+          <li><i class="fa-regular fa-clock" aria-hidden="true"></i><span>Mon–Sat 9:00 am – 3:00 pm</span></li>
+        </ul>
       </div>
+      <div>
+        <h3 class="footer-heading">Connect</h3>
+        <ul class="footer-links">
+          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:ciao@fazenda.london">ciao@fazenda.london</a></li>
+          <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+442073750577">+44 20 7375 0577</a></li>
+          <li><i class="fa-solid fa-globe" aria-hidden="true"></i><a href="https://www.fazenda.london">fazenda.london</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Fazenda. All Rights Reserved.</p>
     </div>
   </footer>
 
   <script>
     const navbar = document.getElementById('navbar');
-
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
   </script>
 </body>
