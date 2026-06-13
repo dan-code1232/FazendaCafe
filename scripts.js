@@ -151,3 +151,72 @@ document.addEventListener('DOMContentLoaded', () => {
     if (target) setTimeout(()=> window.scrollTo({ top: target.offsetTop - 92, behavior: 'smooth' }), 120);
   }
 });
+
+/* Reviews slider (simple, accessible) */
+(function(){
+  const slider = document.querySelector('.reviews-slider');
+  if (!slider) return;
+  const slidesWrap = slider.querySelector('.slides');
+  const slides = Array.from(slidesWrap.querySelectorAll('.slide'));
+  let index = 0;
+
+  function show(i){
+    slides.forEach((s,idx)=> s.style.display = idx===i ? 'block' : 'none');
+  }
+  show(index);
+
+  const prev = slider.querySelector('.prev');
+  const next = slider.querySelector('.next');
+  prev && prev.addEventListener('click', ()=>{ index = (index-1+slides.length)%slides.length; show(index); });
+  next && next.addEventListener('click', ()=>{ index = (index+1)%slides.length; show(index); });
+
+  // auto-rotate
+  let timer = setInterval(()=>{ index = (index+1)%slides.length; show(index); }, 6000);
+  slider.addEventListener('mouseover', ()=> clearInterval(timer));
+  slider.addEventListener('mouseout', ()=> timer = setInterval(()=>{ index = (index+1)%slides.length; show(index); }, 6000));
+})();
+
+/* Simple masonry rearrange on resize for images already using CSS columns */
+(function(){
+  const ms = document.querySelector('.masonry');
+  if (!ms) return;
+  function ensure(){ /* images are auto-flowing via CSS columns */ }
+  window.addEventListener('resize', ensure);
+  ensure();
+})();
+
+/* Catering form: basic client-side validation and mocked success */
+(function(){
+  const form = document.getElementById('cateringForm');
+  if (!form) return;
+  const msg = document.getElementById('formMessage');
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const data = new FormData(form);
+    if (!data.get('name') || !data.get('email')){
+      msg.textContent = 'Please provide name and email.';
+      msg.style.color = '#c00';
+      return;
+    }
+    msg.textContent = 'Sending…';
+    // simulate send
+    setTimeout(()=>{
+      msg.textContent = 'Thanks! We will reply within 1-2 business days.';
+      msg.style.color = 'var(--sage-dark)';
+      form.reset();
+    }, 800);
+  });
+})();
+
+/* Improve keyboard accessibility for slider buttons */
+document.addEventListener('keydown', (e)=>{
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
+    const slider = document.querySelector('.reviews-slider');
+    if (!slider) return;
+    const prev = slider.querySelector('.prev');
+    const next = slider.querySelector('.next');
+    if (e.key === 'ArrowLeft') prev && prev.click();
+    if (e.key === 'ArrowRight') next && next.click();
+  }
+});
+

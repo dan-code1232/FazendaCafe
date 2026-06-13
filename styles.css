@@ -135,6 +135,52 @@ img {
   border-bottom: 1px solid var(--border);
 }
 
+/* Mobile-first layout tweaks */
+.hero { display: grid; grid-template-columns: 1fr; min-height: 60vh; align-items: center; padding: 3.25rem 1rem; }
+.hero-photo { display:none; }
+.hero-content { text-align: left; }
+
+.section { padding: 3.25rem 0; }
+
+.about-grid { display:block; }
+.menu-grid { display:block; }
+.menu-card { margin-bottom: 1.25rem; border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, #fff, #fcfbf8); box-shadow: var(--shadow); }
+.menu-card img { width:100%; height:180px; object-fit:cover; display:block; }
+.menu-body { padding: 1rem; }
+.menu-title { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.5rem; }
+.badge { background: var(--sage); color: #fff; padding: 0.15rem 0.5rem; font-size: 0.75rem; border-radius: 999px; margin-left: 0.6rem; }
+
+.reviews-slider { display:flex; align-items:center; gap:1rem; }
+.slides { flex:1; overflow:hidden; position:relative; }
+.slide { min-height:120px; padding:1rem; background: linear-gradient(180deg, rgba(255,255,255,0.98), #fff); border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+.slider-btn { background:none; border:1px solid rgba(0,0,0,0.06); padding:0.5rem 0.8rem; font-size:1.2rem; border-radius:8px; cursor:pointer; }
+
+.catering-grid { display:block; }
+.catering-form { margin-top:1rem; display:grid; gap:0.6rem; }
+.catering-form input, .catering-form textarea { padding:0.8rem; border-radius:8px; border:1px solid var(--border); }
+.form-message { margin-top:0.6rem; color: var(--sage-dark); }
+
+.masonry { column-count:2; column-gap:1rem; }
+.masonry img { width:100%; display:block; margin-bottom:1rem; border-radius:8px; }
+
+.contact-grid { display:grid; gap:1rem; }
+.map-wrap iframe { width:100%; height:220px; border:0; border-radius:8px; }
+
+/* Larger screens */
+@media(min-width:900px){
+  .hero { grid-template-columns: 1fr 480px; min-height: 86vh; padding:4.5rem 1rem; }
+  .hero-photo { display:block; }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; border-radius:12px; box-shadow: var(--shadow); }
+  .about-grid{ display:grid; grid-template-columns: 1fr 420px; gap:3rem; align-items:center; }
+  .menu-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:1.25rem; }
+  .masonry{ column-count:3; }
+  .contact-grid{ grid-template-columns: 1fr 1fr; align-items:center; }
+}
+
+/* Accessibility focus */
+:focus{ outline: 3px solid rgba(163,188,150,0.12); outline-offset: 2px; }
+
+
 .nav-inner {
   display: flex;
   align-items: center;
