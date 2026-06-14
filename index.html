@@ -188,7 +188,13 @@
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .hero-title { font-family: var(--font-serif); font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--olive);   /* ← add this */
+}
     .hero-title em { color: var(--olive); font-style: italic; }
     .hero-text { font-size: 1.2rem; font-weight: 300; margin-bottom: 2.5rem; max-width: 600px; opacity: 0.9; }
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
