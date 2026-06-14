@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fazenda Art Café - A family-run Italian deli, coffee shop, and vibrant creative studio in London." />
-  <title>Fazenda Art Café | Italian Coffee & Creativity</title>
+  <meta name="description" content="Fazenda Art Café - A family-run Italian deli, coffee shop, and vibrant creative studio near Liverpool Street, London. Fresh focaccia, espresso, and Monday evening art sessions." />
+  <title>Fazenda Art Café | Italian Deli & Coffee near Liverpool Street</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,34 +19,18 @@
       --crema: #F9F6F0;         
       --terracotta: #D36B46;    
       --terracotta-dark: #B55836;
-      --olive: #a3bc96;         /* Updated Green */
+      --olive: #a3bc96;
       --sand: #E8E2D5;          
       
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* ─── CUSTOM HIGHLIGHT ─── */
-    ::selection {
-      background-color: var(--olive);
-      color: var(--espresso);
-    }
-    ::-moz-selection {
-      background-color: var(--olive);
-      color: var(--espresso);
-    }
+    ::selection { background-color: var(--olive); color: var(--espresso); }
+    ::-moz-selection { background-color: var(--olive); color: var(--espresso); }
 
-    /* ─── RESET & BASE ─── */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-sans);
       color: var(--espresso);
@@ -55,29 +39,14 @@
       overflow-x: hidden;
     }
 
-    /* Hide normal cursor on devices with a fine pointer */
     @media (pointer: fine) {
-      body, a, button, input, textarea {
-        cursor: none !important;
-      }
+      body, a, button, input, textarea { cursor: none !important; }
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
     .section-title {
       font-family: var(--font-serif);
@@ -97,37 +66,18 @@
     }
 
     /* ─── SPA PAGE LOGIC ─── */
-    .page {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      min-height: 100vh;
-      padding-top: 80px; 
-    }
-
-    .page.active {
-      display: block;
-      opacity: 1;
-      animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    }
+    .page { display: none; opacity: 0; transition: opacity 0.5s ease-in-out; min-height: 100vh; padding-top: 80px; }
+    .page.active { display: block; opacity: 1; animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── SCROLL REVEAL ANIMATIONS ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* ─── BUTTONS & CLICK EFFECTS ─── */
+    /* ─── BUTTONS ─── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -144,62 +94,49 @@
       overflow: hidden;
       z-index: 1;
     }
+    .btn:active { transform: scale(0.95); }
 
-    .btn:active {
-      transform: scale(0.95);
-    }
-
-    .btn-primary {
-      background-color: var(--terracotta);
-      color: #fff;
-      border: 2px solid var(--terracotta);
-    }
-
+    .btn-primary { background-color: var(--terracotta); color: #fff; border: 2px solid var(--terracotta); }
     .btn-primary::before, .btn-outline::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: var(--espresso);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease-in-out;
-      z-index: -1;
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: var(--espresso); transform: scaleX(0); transform-origin: right;
+      transition: transform 0.4s ease-in-out; z-index: -1;
     }
+    .btn-primary:hover::before, .btn-outline:hover::before { transform: scaleX(1); transform-origin: left; }
+    .btn-primary:hover { border-color: var(--espresso); color: var(--crema); box-shadow: 0 8px 20px rgba(43,30,22,0.2); }
+    .btn-outline { background-color: transparent; color: var(--espresso); border: 2px solid var(--espresso); }
+    .btn-outline.light { color: var(--crema); border-color: var(--crema); }
+    .btn-outline:hover { border-color: var(--espresso); color: var(--crema); }
 
-    .btn-primary:hover::before, .btn-outline:hover::before {
-      transform: scaleX(1);
-      transform-origin: left;
+    /* ─── NAV CTA BUTTON (Book / Call) ─── */
+    .btn-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.4rem;
+      background-color: var(--terracotta);
+      color: #fff !important;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 2px solid var(--terracotta);
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-
-    .btn-primary:hover {
-      border-color: var(--espresso);
-      color: var(--crema);
-      box-shadow: 0 8px 20px rgba(43, 30, 22, 0.2);
+    .btn-nav-cta:hover {
+      background-color: var(--terracotta-dark);
+      border-color: var(--terracotta-dark);
+      transform: scale(1.04);
     }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--espresso);
-      border: 2px solid var(--espresso);
-    }
-
-    .btn-outline.light {
-      color: var(--crema);
-      border-color: var(--crema);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--espresso);
-      color: var(--crema);
-    }
+    /* Ensure the underline pseudo-element from .nav-links a doesn't appear on the CTA */
+    .nav-links .btn-nav-cta::after { display: none !important; }
 
     /* ─── NAVIGATION ─── */
     nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      padding: 1rem 0;
+      position: fixed; width: 100%; top: 0; z-index: 100; padding: 1rem 0;
       transition: all 0.4s ease;
       background-color: rgba(43, 30, 22, 0.98);
       backdrop-filter: blur(10px);
@@ -207,587 +144,220 @@
     }
 
     .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      gap: 1rem;
     }
 
     .logo img {
-      height: 55px;
-      width: auto;
-      filter: brightness(0) invert(1); /* Makes the crest white for the dark nav */
+      height: 55px; width: auto;
+      filter: brightness(0) invert(1);
       transition: transform 0.4s cubic-bezier(0.3, 2, 0.4, 1);
     }
-    
-    .logo:hover img {
-      transform: scale(1.08) rotate(-2deg);
-    }
+    .logo:hover img { transform: scale(1.08) rotate(-2deg); }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
     .nav-links a {
-      color: var(--crema);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: color 0.3s;
+      color: var(--crema); font-size: 0.9rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
       position: relative;
     }
-
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -6px;
-      left: 50%;
-      background-color: var(--olive);
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
+      content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 50%;
+      background-color: var(--olive); transition: all 0.3s ease; transform: translateX(-50%);
     }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--olive); }
 
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
+    .mobile-toggle { display: none; color: var(--crema); font-size: 1.5rem; background: none; border: none; z-index: 101; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; overflow: hidden; margin-top: -80px;
     }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--olive);
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 120%;
+      background: linear-gradient(rgba(43,30,22,0.65), rgba(43,30,22,0.9)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center top/cover no-repeat;
+      z-index: 0; will-change: transform;
     }
+    .hero-content { position: relative; z-index: 2; }
 
-    .mobile-toggle {
-      display: none;
-      color: var(--crema);
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      z-index: 101;
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-  .hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  overflow: hidden; /* Important: keeps the moving background within the hero area */
-  margin-top: -80px;
-}
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-title em { color: var(--olive); font-style: italic; }
+    .hero-text { font-size: 1.2rem; font-weight: 300; margin-bottom: 2.5rem; max-width: 600px; opacity: 0.9; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-.hero-bg {
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 120%; /* Extra height allows room for the background to shift */
-  background: linear-gradient(rgba(43, 30, 22, 0.65), rgba(43, 30, 22, 0.9)), 
-              url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center top/cover no-repeat;
-  z-index: 0;
-  will-change: transform; /* Signals the GPU to prepare for motion */
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2; /* Ensures text stays on top of the image and the dark gradient */
-}
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-title em {
-      color: var(--olive);
-      font-style: italic;
-    }
-
-    .hero-text {
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      opacity: 0.9;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* ─── ABOUT / HOME SECTIONS ─── */
-    .about {
-      padding: 8rem 0;
-      background-color: var(--crema);
-      position: relative;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .about-image {
-      position: relative;
-    }
-
+    /* ─── ABOUT ─── */
+    .about { padding: 8rem 0; background-color: var(--crema); position: relative; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-image { position: relative; }
     .about-image img {
-      border-radius: 8px;
-      box-shadow: -20px 20px 0 var(--sand);
-      transition: transform 0.1s linear; /* Fast for parallax JS */
-      will-change: transform;
+      border-radius: 8px; box-shadow: -20px 20px 0 var(--sand);
+      transition: transform 0.1s linear; will-change: transform;
     }
-
     .about-image::after {
-      content: '';
-      position: absolute;
-      top: -15px; right: -15px; bottom: 15px; left: 15px;
-      border: 2px solid var(--olive);
-      border-radius: 8px;
-      z-index: -1;
+      content: ''; position: absolute; top: -15px; right: -15px; bottom: 15px; left: 15px;
+      border: 2px solid var(--olive); border-radius: 8px; z-index: -1;
     }
+    .about-text p { font-size: 1.1rem; margin-bottom: 1.5rem; color: #4A3F35; }
 
-    .about-text p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #4A3F35;
-    }
-
-    .home-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-
+    .home-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; }
     .action-card {
-      background-color: var(--sand);
-      padding: 3rem;
-      border-radius: 12px;
-      text-align: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      cursor: none;
+      background-color: var(--sand); padding: 3rem; border-radius: 12px;
+      text-align: center; transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: none;
     }
+    .action-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); background-color: #fff; }
+    .action-card i { font-size: 2.5rem; color: var(--terracotta); margin-bottom: 1.5rem; }
+    .action-card h3 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-    .action-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      background-color: #fff;
-    }
-
-    .action-card i {
-      font-size: 2.5rem;
-      color: var(--terracotta);
-      margin-bottom: 1.5rem;
-    }
-
-    .action-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    /* ─── MENUS (FOOD & DRINKS) ─── */
-    .menu-page {
-      padding: 4rem 0 8rem;
-      background-color: var(--crema);
-    }
-
+    /* ─── MENU PAGES ─── */
+    .menu-page { padding: 4rem 0 8rem; background-color: var(--crema); }
     .page-header {
-      padding: 6rem 0 4rem;
-      background-color: var(--sand);
-      text-align: center;
-      margin-bottom: 4rem;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 6rem 0 4rem; background-color: var(--sand);
+      text-align: center; margin-bottom: 4rem; border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* Search Bar */
-    .search-container {
-      max-width: 600px;
-      margin: 0 auto 4rem;
-      position: relative;
-    }
-
+    .search-container { max-width: 600px; margin: 0 auto 4rem; position: relative; }
     .search-input {
-      width: 100%;
-      padding: 1.2rem 1.5rem;
-      padding-left: 3rem;
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      color: var(--espresso);
-      background-color: var(--sand);
-      border: 2px solid transparent;
-      border-radius: 50px;
-      outline: none;
-      transition: all 0.3s ease;
+      width: 100%; padding: 1.2rem 1.5rem; padding-left: 3rem;
+      font-family: var(--font-sans); font-size: 1rem; color: var(--espresso);
+      background-color: var(--sand); border: 2px solid transparent; border-radius: 50px;
+      outline: none; transition: all 0.3s ease;
     }
+    .search-input:focus { border-color: var(--olive); background-color: #fff; box-shadow: 0 10px 20px rgba(163,188,150,0.2); }
+    .search-icon { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--terracotta); font-size: 1.1rem; }
 
-    .search-input:focus {
-      border-color: var(--olive);
-      background-color: #fff;
-      box-shadow: 0 10px 20px rgba(163, 188, 150, 0.2);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1.2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--terracotta);
-      font-size: 1.1rem;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 4rem;
-    }
-
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; }
     .menu-category h3 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      color: var(--espresso);
-      margin-bottom: 2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--olive);
-      display: inline-block;
+      font-family: var(--font-serif); font-size: 2rem; color: var(--espresso);
+      margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--olive); display: inline-block;
     }
-
     .menu-item {
-      margin-bottom: 1.8rem;
-      padding: 1.5rem;
-      background-color: #fff;
-      border-radius: 8px;
-      transition: all 0.4s ease;
-      border-left: 4px solid var(--sand);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      margin-bottom: 1.8rem; padding: 1.5rem; background-color: #fff; border-radius: 8px;
+      transition: all 0.4s ease; border-left: 4px solid var(--sand); box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     }
-
-    .menu-item:hover {
-      transform: translateX(10px);
-      border-left-color: var(--olive);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .menu-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.5rem;
-      gap: 1rem;
-    }
-
-    .menu-item-name {
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--espresso);
-    }
-
-    .menu-item-name.highlight {
-      color: var(--terracotta);
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-style: italic;
-    }
-
+    .menu-item:hover { transform: translateX(10px); border-left-color: var(--olive); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+    .menu-item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; gap: 1rem; }
+    .menu-item-name { font-weight: 700; font-size: 1.15rem; color: var(--espresso); }
+    .menu-item-name.highlight { color: var(--terracotta); font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; }
     .menu-item-price {
-      font-weight: 700;
-      color: var(--espresso);
-      font-family: var(--font-sans);
-      background-color: var(--olive);
-      color: #fff;
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.95rem;
+      font-weight: 700; font-family: var(--font-sans);
+      background-color: var(--olive); color: #fff;
+      padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.95rem;
     }
+    .menu-item-desc { font-size: 0.95rem; color: #555; line-height: 1.5; }
+    .dietary { font-size: 0.75rem; font-weight: 700; color: var(--terracotta); margin-left: 0.5rem; vertical-align: super; }
 
-    .menu-item-desc {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    .dietary {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--terracotta);
-      margin-left: 0.5rem;
-      vertical-align: super;
-    }
-
-    /* ─── ART CAFE SECTION (OWN PAGE) ─── */
+    /* ─── ART CAFÉ PAGE ─── */
     .art-cafe-page {
-      background-color: var(--espresso);
-      color: var(--crema);
-      position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      padding-bottom: 8rem;
+      background-color: var(--espresso); color: var(--crema);
+      position: relative; overflow: hidden; min-height: 100vh; padding-bottom: 8rem;
     }
-
     .art-cafe-page::before, .art-cafe-page::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.15;
-      filter: blur(50px);
-      transition: transform 0.1s linear; /* Parallax ready */
-      will-change: transform;
+      content: ''; position: absolute; border-radius: 50%; opacity: 0.15;
+      filter: blur(50px); transition: transform 0.1s linear; will-change: transform;
     }
+    .art-cafe-page::before { top: 10%; right: 10%; width: 400px; height: 400px; background: var(--terracotta); }
+    .art-cafe-page::after { bottom: 10%; left: 5%; width: 500px; height: 500px; background: var(--olive); }
 
-    .art-cafe-page::before {
-      top: 10%; right: 10%;
-      width: 400px; height: 400px;
-      background: var(--terracotta);
-    }
+    .art-header { padding: 8rem 0 4rem; text-align: center; position: relative; z-index: 2; }
+    .art-header .section-title { color: var(--crema); font-size: clamp(3rem, 6vw, 4.5rem); }
 
-    .art-cafe-page::after {
-      bottom: 10%; left: 5%;
-      width: 500px; height: 500px;
-      background: var(--olive);
-    }
-
-    .art-header {
-      padding: 8rem 0 4rem;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .art-header .section-title {
-      color: var(--crema);
-      font-size: clamp(3rem, 6vw, 4.5rem);
-    }
-
-    .art-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-      margin-top: 2rem;
-    }
+    .art-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; z-index: 2; margin-top: 2rem; }
 
     .ticket-card {
-      background-color: var(--crema);
-      color: var(--espresso);
-      padding: 4rem 3rem;
-      border-radius: 12px;
-      position: relative;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      transform: rotate(2deg);
+      background-color: var(--crema); color: var(--espresso); padding: 4rem 3rem;
+      border-radius: 12px; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease; transform: rotate(2deg);
     }
-
-    .ticket-card:hover {
-      transform: translateY(-10px) rotate(0deg);
-      box-shadow: 0 40px 70px rgba(0,0,0,0.6);
-    }
-
+    .ticket-card:hover { transform: translateY(-10px) rotate(0deg); box-shadow: 0 40px 70px rgba(0,0,0,0.6); }
     .ticket-card::before, .ticket-card::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 40px; height: 40px;
-      background-color: var(--espresso);
-      border-radius: 50%;
-      transform: translateY(-50%);
+      content: ''; position: absolute; top: 50%; width: 40px; height: 40px;
+      background-color: var(--espresso); border-radius: 50%; transform: translateY(-50%);
     }
-    
     .ticket-card::before { left: -20px; }
     .ticket-card::after { right: -20px; }
 
-    .ticket-header {
-      text-align: center;
-      border-bottom: 3px dashed #ccc;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .ticket-header h4 {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      color: var(--terracotta);
-    }
-
-    .ticket-detail {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .ticket-detail i {
-      color: var(--olive);
-      font-size: 1.5rem;
-      width: 30px;
-      text-align: center;
-    }
-
+    .ticket-header { text-align: center; border-bottom: 3px dashed #ccc; padding-bottom: 2rem; margin-bottom: 2rem; }
+    .ticket-header h4 { font-family: var(--font-serif); font-size: 2.5rem; color: var(--terracotta); }
+    .ticket-detail { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.1rem; }
+    .ticket-detail i { color: var(--olive); font-size: 1.5rem; width: 30px; text-align: center; }
     .ticket-price {
-      text-align: center;
-      font-size: 2rem;
-      font-family: var(--font-serif);
-      font-weight: 700;
-      color: var(--terracotta);
-      margin: 2rem 0;
-      background: var(--sand);
-      padding: 1rem;
-      border-radius: 8px;
+      text-align: center; font-size: 2rem; font-family: var(--font-serif); font-weight: 700;
+      color: var(--terracotta); margin: 2rem 0; background: var(--sand); padding: 1rem; border-radius: 8px;
     }
 
-    .art-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .art-gallery img {
+    /* ─── HOURS CLARIFICATION BADGE ─── */
+    .hours-note {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      background-color: rgba(163,188,150,0.12);
+      border: 1px solid var(--olive);
       border-radius: 8px;
-      height: 250px;
-      object-fit: cover;
-      width: 100%;
-      transition: transform 0.4s;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+      color: #4A3F35;
     }
-    .art-gallery img:hover {
-      transform: scale(1.05);
-      z-index: 2;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
+    .hours-note i { color: var(--olive); margin-top: 2px; flex-shrink: 0; }
+
+    .art-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .art-gallery img { border-radius: 8px; height: 250px; object-fit: cover; width: 100%; transition: transform 0.4s; }
+    .art-gallery img:hover { transform: scale(1.05); z-index: 2; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
     /* ─── FOOTER ─── */
-    footer {
-      background-color: #1A120A;
-      color: #A49A8F;
-      padding: 5rem 0 2rem;
-      position: relative;
+    footer { background-color: #1A120A; color: #A49A8F; padding: 5rem 0 2rem; position: relative; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand img { height: 60px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); opacity: 0.8; }
+    .footer-heading { color: var(--crema); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .footer-contact li { margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 1rem; transition: color 0.3s; }
+    .footer-contact li a:hover { color: var(--olive); }
+    .footer-contact i { margin-top: 4px; color: var(--terracotta); }
+    /* Monday gap notice in footer */
+    .monday-gap {
+      display: inline-block;
+      background-color: rgba(211,107,70,0.1);
+      border-left: 3px solid var(--terracotta);
+      padding: 0.4rem 0.7rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      margin-top: 0.4rem;
+      color: #C88060;
     }
+    .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; font-size: 0.85rem; }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
+    /* ─── CUSTOM CURSOR ─── */
+    .cursor-dot { width: 8px; height: 8px; background-color: var(--terracotta); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s; }
+    .cursor-outline { width: 40px; height: 40px; border: 2px solid var(--terracotta); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
+    body.hovering .cursor-dot { width: 12px; height: 12px; background-color: transparent; }
+    body.hovering .cursor-outline { width: 65px; height: 65px; background-color: rgba(163,188,150,0.15); border-color: var(--olive); }
+    body.clicking .cursor-outline { transform: translate(-50%, -50%) scale(0.6); background-color: rgba(211,107,70,0.4); border-color: var(--terracotta); }
+    body.clicking .cursor-dot { transform: translate(-50%, -50%) scale(0.5); }
 
-    .footer-brand img {
-      height: 60px;
-      margin-bottom: 1.5rem;
-      filter: brightness(0) invert(1);
-      opacity: 0.8;
-    }
-
-    .footer-heading {
-      color: var(--crema);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .footer-contact li {
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: color 0.3s;
-    }
-
-    .footer-contact li a:hover {
-      color: var(--olive);
-    }
-    
-    .footer-contact i {
-      margin-top: 4px;
-      color: var(--terracotta);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 2rem;
-      font-size: 0.85rem;
-    }
-
-    /* ─── CUSTOM CURSOR STYLES ─── */
-    .cursor-dot {
-      width: 8px; height: 8px;
-      background-color: var(--terracotta);
-      position: fixed; top: 0; left: 0;
-      border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
-    }
-
-    .cursor-outline {
-      width: 40px; height: 40px;
-      border: 2px solid var(--terracotta);
-      position: fixed; top: 0; left: 0;
-      border-radius: 50%;
-      pointer-events: none; z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-    }
-
-    /* Cursor Hover States */
-    body.hovering .cursor-dot {
-      width: 12px; height: 12px;
-      background-color: transparent;
-    }
-    body.hovering .cursor-outline {
-      width: 65px; height: 65px;
-      background-color: rgba(163, 188, 150, 0.15); /* Olive wash */
-      border-color: var(--olive);
-    }
-
-    /* Cursor Click Effect */
-    body.clicking .cursor-outline {
-      transform: translate(-50%, -50%) scale(0.6);
-      background-color: rgba(211, 107, 70, 0.4);
-      border-color: var(--terracotta);
-    }
-    body.clicking .cursor-dot {
-      transform: translate(-50%, -50%) scale(0.5);
-    }
-
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       .cursor-dot, .cursor-outline { display: none !important; }
       .home-cards, .about-grid, .art-grid, .footer-grid, .art-gallery { grid-template-columns: 1fr; }
       .mobile-toggle { display: block; }
+      .btn-nav-cta { display: none; } /* Hidden in mobile menu - phone link in footer suffices */
+      .nav-right { gap: 1rem; }
       .nav-links {
         position: absolute; top: 100%; left: 0; width: 100%;
-        background-color: var(--espresso);
-        flex-direction: column; align-items: center;
+        background-color: var(--espresso); flex-direction: column; align-items: center;
         padding: 2rem 0; gap: 1.5rem;
-        transform: translateY(-150%);
-        opacity: 0; visibility: hidden;
+        transform: translateY(-150%); opacity: 0; visibility: hidden;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       }
-      .nav-links.active {
-        transform: translateY(0); opacity: 1; visibility: visible;
-      }
+      .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
     }
   </style>
 </head>
@@ -799,50 +369,58 @@
   <nav id="navbar">
     <div class="nav-container">
       <a href="#" data-target="home" class="logo spa-link">
-        <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Crest Logo">
+        <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Art Café — Home">
       </a>
-      
+
+      <div class="nav-right">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#" data-target="home" class="spa-link active">Home</a></li>
+          <li><a href="#" data-target="food" class="spa-link">Food Menu</a></li>
+          <li><a href="#" data-target="drinks" class="spa-link">Drinks</a></li>
+          <li><a href="#" data-target="art" class="spa-link">Art Café</a></li>
+        </ul>
+
+        <!-- Persistent CTA: always visible in desktop nav -->
+        <a href="tel:+442073750577" class="btn-nav-cta" aria-label="Call us to reserve">
+          <i class="fa-solid fa-phone"></i> Reserve a Table
+        </a>
+      </div>
+
       <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
         <i class="fa-solid fa-bars"></i>
       </button>
-
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#" data-target="home" class="spa-link active">Home</a></li>
-        <li><a href="#" data-target="food" class="spa-link">Food Menu</a></li>
-        <li><a href="#" data-target="drinks" class="spa-link">Drinks</a></li>
-        <li><a href="#" data-target="art" class="spa-link">Art Café</a></li>
-      </ul>
     </div>
   </nav>
 
   <div id="app">
 
+    <!-- ═══ HOME PAGE ═══ -->
     <div id="view-home" class="page active">
-<header class="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  
-  <div class="container hero-content">
-    <span class="section-subtitle" style="color: var(--olive);">Est. London</span>
-    <h1 class="hero-title">Authentic Italian Taste.<br><em>Creative Spirit.</em></h1>
-    <p class="hero-text">A lovely little family-run Italian deli and coffee shop by day, and a vibrant creative studio by night.</p>
-    <div class="hero-buttons">
-      <a href="#" data-target="food" class="btn btn-primary spa-link">Our Menus</a>
-      <a href="#" data-target="art" class="btn btn-outline light spa-link">Join Art Café</a>
-    </div>
-  </div>
-</header>
+      <header class="hero">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="container hero-content">
+          <span class="section-subtitle" style="color: var(--olive);">Est. London · Near Liverpool Street</span>
+          <h1 class="hero-title">Authentic Italian Taste.<br><em>Creative Spirit.</em></h1>
+          <p class="hero-text">A lovely little family-run Italian deli and coffee shop by day, and a vibrant creative studio by night.</p>
+          <div class="hero-buttons">
+            <a href="#" data-target="food" class="btn btn-primary spa-link">Our Menus</a>
+            <a href="#" data-target="art" class="btn btn-outline light spa-link">Join Art Café</a>
+          </div>
+        </div>
+      </header>
+
       <section id="about" class="about">
         <div class="container">
           <div class="about-grid">
             <div class="about-image reveal">
-              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Barista pouring coffee" class="parallax-img" data-speed="2">
+              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Barista pouring espresso at Fazenda" class="parallax-img" data-speed="2">
             </div>
             <div class="about-text reveal">
               <span class="section-subtitle">Family Roots</span>
               <h2 class="section-title">From Spitalfields to Harrow Place.</h2>
               <p>Brought to London many years ago, Fazenda is an independent, family-run business led by Antonio and Luca. We started our journey in Spitalfields at Leyden Street, pouring our passion for traditional Italian hospitality into every cup.</p>
               <p>Today, located just steps from Liverpool Street, we continue to serve rich, aromatic coffees, deli-style lunches, and signature cakes that are nothing short of irresistible.</p>
-              <p>But we are more than just a café. We believe in community. That’s why our doors stay open on Mondays for artists, thinkers, and friends to gather, create, and connect.</p>
+              <p>But we are more than just a café. We believe in community. That's why our doors reopen every Monday evening for artists, thinkers, and friends to gather, create, and connect.</p>
             </div>
           </div>
 
@@ -856,7 +434,7 @@
             <div class="action-card spa-link" data-target="art">
               <i class="fa-solid fa-paintbrush"></i>
               <h3>The Art Café</h3>
-              <p>Weekly open-studio sessions. Bring your canvas, we’ll bring the wine.</p>
+              <p>Weekly open-studio sessions every Monday evening. Bring your canvas, we'll bring the wine.</p>
               <span class="btn btn-outline" style="margin-top: 1rem;">Discover More</span>
             </div>
           </div>
@@ -864,6 +442,7 @@
       </section>
     </div>
 
+    <!-- ═══ FOOD MENU PAGE ═══ -->
     <div id="view-food" class="page">
       <div class="page-header">
         <div class="container reveal">
@@ -939,6 +518,7 @@
       </section>
     </div>
 
+    <!-- ═══ DRINKS MENU PAGE ═══ -->
     <div id="view-drinks" class="page">
       <div class="page-header">
         <div class="container reveal">
@@ -996,6 +576,7 @@
       </section>
     </div>
 
+    <!-- ═══ ART CAFÉ PAGE ═══ -->
     <div id="view-art" class="page art-cafe-page">
       <div class="container">
         <div class="art-header reveal">
@@ -1009,7 +590,17 @@
             <h3 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1.5rem;">Open Studio Nights</h3>
             <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">Every Monday evening, Fazenda transforms. We push the tables together, bring out the supplies, and host our open studio sessions. Whether you're into collage, painting, or just want to doodle while sipping a glass of wine with the local community, there is a seat for you.</p>
             <p style="margin-bottom: 2.5rem; font-size: 1.1rem; line-height: 1.8;">No prior experience is necessary. We believe everyone has a creative spark that just needs the right environment—and the right espresso—to shine.</p>
-            <a href="https://eventbrite.com" target="_blank" class="btn btn-primary"><i class="fa-solid fa-ticket"></i> Book on Eventbrite</a>
+
+            <!-- Clarify the Monday gap so visitors aren't caught out -->
+            <div class="hours-note" style="margin-bottom: 2.5rem; max-width: 480px;">
+              <i class="fa-regular fa-clock"></i>
+              <span>On Mondays the café closes at <strong>3:00 pm</strong> and reopens for Art Café at <strong>6:30 pm</strong>. Please don't arrive between 3–6 pm — we'll see you at the evening session!</span>
+            </div>
+
+            <!-- target="_blank" keeps users on the main site -->
+            <a href="https://eventbrite.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <i class="fa-solid fa-ticket"></i> Book on Eventbrite
+            </a>
           </div>
 
           <div class="ticket-card reveal" style="transition-delay: 0.2s;">
@@ -1017,7 +608,6 @@
               <h4>Art Café x Fazenda</h4>
               <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-top: 0.5rem; font-weight: 700; color: #888;">Weekly Creative Session</p>
             </div>
-            
             <div class="ticket-detail">
               <i class="fa-regular fa-calendar"></i>
               <span>Every Monday Evening</span>
@@ -1030,54 +620,66 @@
               <i class="fa-solid fa-location-dot"></i>
               <span>9 Harrow Place, London E1 7DB</span>
             </div>
-
             <div class="ticket-price">
-              £15.00 <br>
+              £15.00<br>
               <span style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; color: var(--espresso); opacity: 0.8; display: block; margin-top: 0.5rem;">(Includes a complimentary drink & basic supplies)</span>
             </div>
           </div>
         </div>
 
         <div class="art-gallery reveal" style="margin-top: 8rem;">
-           <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800&auto=format&fit=crop" alt="Paints and brushes" class="parallax-img" data-speed="1.5">
-           <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Abstract painting process" class="parallax-img" data-speed="-1.5">
+          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800&auto=format&fit=crop" alt="Paints and brushes at Fazenda Art Café Monday sessions" class="parallax-img" data-speed="1.5">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Abstract painting in progress at Fazenda open studio" class="parallax-img" data-speed="-1.5">
         </div>
       </div>
     </div>
 
-  </div> <footer id="location">
+  </div><!-- /#app -->
+
+  <footer id="location">
     <div class="container reveal">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Logo">
-          <p>A lovely little Italian food & coffee shop near Liverpool Street. Built on family tradition, fueled by community and creativity.</p>
+          <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Art Café Logo">
+          <p>A family-run Italian deli and coffee shop near Liverpool Street. Built on tradition, fueled by community and creativity.</p>
         </div>
-        
+
         <div>
           <h4 class="footer-heading">Visit Us</h4>
           <ul class="footer-contact" style="list-style: none;">
             <li><i class="fa-solid fa-map-pin"></i> <span>9 Harrow Place<br>London E1 7DB<br>UK</span></li>
-            <li><i class="fa-regular fa-clock"></i> <span>Tue – Sat: 8:00 am – 4:00 pm<br>Mon: 8:00 am - 3:00 pm <br><em>(Art Café 18:30 - 20:30)</em></span></li>
+            <li>
+              <i class="fa-regular fa-clock"></i>
+              <span>
+                Tue – Sat: 8:00 am – 4:00 pm<br>
+                Mon: 8:00 am – 3:00 pm
+                <span class="monday-gap">
+                  <i class="fa-solid fa-triangle-exclamation" style="font-size:0.75rem;"></i>
+                  Café closed 3:00 – 6:30 pm on Mondays<br>
+                  Art Café reopens 6:30 – 8:30 pm
+                </span>
+              </span>
+            </li>
           </ul>
         </div>
-        
+
         <div>
           <h4 class="footer-heading">Get in Touch</h4>
           <ul class="footer-contact" style="list-style: none;">
             <li><i class="fa-solid fa-envelope"></i> <a href="mailto:ciao@fazenda.london">ciao@fazenda.london</a></li>
             <li><i class="fa-solid fa-phone"></i> <a href="tel:+442073750577">+44 20 7375 0577</a></li>
-            <li><i class="fa-brands fa-instagram"></i> <a href="#">@fazenda.london</a></li>
+            <li><i class="fa-brands fa-instagram"></i> <a href="https://instagram.com/fazenda.london_" target="_blank" rel="noopener noreferrer">@fazenda.london</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Fazenda Art Café. All Rights Reserved.</p>
+        <p>&copy; 2026 Fazenda Art Café · Italian Deli & Coffee near Liverpool Street, London · <a href="mailto:ciao@fazenda.london" style="color: var(--olive);">ciao@fazenda.london</a></p>
       </div>
     </div>
   </footer>
 
   <script>
-    // ─── 1. Custom Cursor & Click Pulse Logic ───
+    // ─── 1. Custom Cursor ───
     const cursorDot = document.getElementById('cursor-dot');
     const cursorOutline = document.getElementById('cursor-outline');
     let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
@@ -1088,44 +690,36 @@
     });
 
     function animateCursor() {
-      let easing = 0.15;
-      outlineX += (mouseX - outlineX) * easing;
-      outlineY += (mouseY - outlineY) * easing;
+      outlineX += (mouseX - outlineX) * 0.15;
+      outlineY += (mouseY - outlineY) * 0.15;
       cursorOutline.style.left = `${outlineX}px`; cursorOutline.style.top = `${outlineY}px`;
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
 
-    // Click effect pulse
     window.addEventListener('mousedown', () => document.body.classList.add('clicking'));
     window.addEventListener('mouseup', () => document.body.classList.remove('clicking'));
 
     function attachHoverEvents() {
-      const interactables = document.querySelectorAll('a, button, .menu-item, input, .action-card');
-      interactables.forEach(el => {
+      document.querySelectorAll('a, button, .menu-item, input, .action-card').forEach(el => {
         el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
       });
     }
 
-    // ─── 2. Mouse Parallax Logic ───
+    // ─── 2. Mouse Parallax ───
     document.addEventListener('mousemove', (e) => {
-      // Parallax on specific images
       document.querySelectorAll('.parallax-img').forEach(layer => {
         const speed = layer.getAttribute('data-speed') || 2;
         const x = (window.innerWidth - e.pageX * speed) / 150;
         const y = (window.innerHeight - e.pageY * speed) / 150;
         layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
       });
-      
-      // Background shape parallax in Art Cafe
+
       const artPage = document.querySelector('.art-cafe-page');
-      if(artPage && artPage.classList.contains('active')) {
-        const x = (e.pageX) / 80;
-        const y = (e.pageY) / 80;
-        artPage.style.setProperty('--art-x', `${x}px`);
-        artPage.style.setProperty('--art-y', `${y}px`);
-        // We inject this dynamically into before/after via pseudo inline styles workaround
+      if (artPage && artPage.classList.contains('active')) {
+        const x = e.pageX / 80;
+        const y = e.pageY / 80;
         const style = document.getElementById('dynamic-parallax') || document.createElement('style');
         style.id = 'dynamic-parallax';
         style.innerHTML = `.art-cafe-page::before { transform: translate(${-x}px, ${-y}px); } .art-cafe-page::after { transform: translate(${x}px, ${y}px); }`;
@@ -1133,8 +727,7 @@
       }
     });
 
-    // ─── 3. SPA Routing Logic ───
-    const links = document.querySelectorAll('.spa-link');
+    // ─── 3. SPA Routing ───
     const pages = document.querySelectorAll('.page');
     const navLinksContainer = document.getElementById('nav-links');
     const mobileMenuToggle = document.getElementById('mobile-toggle');
@@ -1142,7 +735,7 @@
     function navigateTo(targetId) {
       pages.forEach(page => page.classList.remove('active'));
       const targetPage = document.getElementById(`view-${targetId}`);
-      if(targetPage) targetPage.classList.add('active');
+      if (targetPage) targetPage.classList.add('active');
 
       document.querySelectorAll('#nav-links .spa-link').forEach(link => {
         link.classList.remove('active');
@@ -1152,12 +745,10 @@
       navLinksContainer.classList.remove('active');
       mobileMenuToggle.querySelector('i').className = 'fa-solid fa-bars';
       window.scrollTo({ top: 0, behavior: 'instant' });
-
-      attachHoverEvents(); // Reattach cursor logic to new active elements
+      attachHoverEvents();
       retriggerReveals();
     }
 
-    // Delegate clicks to handle elements added dynamically or inside cards
     document.body.addEventListener('click', (e) => {
       const link = e.target.closest('.spa-link');
       if (link) {
@@ -1167,27 +758,23 @@
       }
     });
 
-    // ─── 4. Mobile Menu Toggle ───
+    // ─── 4. Mobile Menu ───
     mobileMenuToggle.addEventListener('click', () => {
       navLinksContainer.classList.toggle('active');
       const icon = mobileMenuToggle.querySelector('i');
       icon.className = navLinksContainer.classList.contains('active') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
     });
 
-    // ─── 5. Live Menu Search ───
+    // ─── 5. Menu Search ───
     function setupMenuSearch(inputId, containerId) {
-      const searchInput = document.getElementById(inputId);
-      searchInput.addEventListener('input', (e) => {
+      document.getElementById(inputId).addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
-        const categories = document.querySelectorAll(`#${containerId} .menu-category`);
-
-        categories.forEach(category => {
-          const items = category.querySelectorAll('.menu-item');
+        document.querySelectorAll(`#${containerId} .menu-category`).forEach(category => {
           let hasVisible = false;
-          items.forEach(item => {
-            const text = item.innerText.toLowerCase();
-            item.style.display = text.includes(term) ? 'block' : 'none';
-            if(text.includes(term)) hasVisible = true;
+          category.querySelectorAll('.menu-item').forEach(item => {
+            const visible = item.innerText.toLowerCase().includes(term);
+            item.style.display = visible ? 'block' : 'none';
+            if (visible) hasVisible = true;
           });
           category.style.display = hasVisible ? 'block' : 'none';
         });
@@ -1196,39 +783,33 @@
     setupMenuSearch('food-search', 'food-menu-container');
     setupMenuSearch('drinks-search', 'drinks-menu-container');
 
-    // ─── 6. Scroll Reveal Animations ───
+    // ─── 6. Scroll Reveal ───
     function retriggerReveals() {
-      const revealElements = document.querySelectorAll('.page.active .reveal, footer .reveal');
       const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-
-      const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+      const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
           entry.target.classList.add('active');
-          observer.unobserve(entry.target); 
+          obs.unobserve(entry.target);
         });
       }, revealOptions);
 
-      revealElements.forEach(el => {
+      document.querySelectorAll('.page.active .reveal, footer .reveal').forEach(el => {
         el.classList.remove('active');
-        revealOnScroll.observe(el);
+        observer.observe(el);
       });
     }
-  // Add this to your existing <script> section
-const heroBg = document.getElementById('hero-bg');
 
-window.addEventListener('scroll', () => {
-  requestAnimationFrame(() => {
-    const scrollPos = window.pageYOffset;
-    
-    // Only animate if in view
-    if (scrollPos < window.innerHeight) {
-      // Moves the image at a fraction of the scroll speed
-      // The '0.3' value makes it move slower (the smaller the number, the slower the parallax)
-      heroBg.style.transform = `translateY(${scrollPos * 0.3}px)`;
-    }
-  });
-});
+    // ─── 7. Hero Scroll Parallax ───
+    const heroBg = document.getElementById('hero-bg');
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => {
+        if (window.pageYOffset < window.innerHeight) {
+          heroBg.style.transform = `translateY(${window.pageYOffset * 0.2}px)`;
+        }
+      });
+    });
+
     // Init
     attachHoverEvents();
     retriggerReveals();
