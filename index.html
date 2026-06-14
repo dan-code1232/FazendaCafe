@@ -1,229 +1,1217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Fazenda — premium Italian-inspired artisan coffee, deli plates and catering near Liverpool Street, East London." />
-  <title>Fazenda — Artisan Coffee & Catering, East London</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fazenda Art Café - A family-run Italian deli, coffee shop, and vibrant creative studio in London." />
+  <title>Fazenda Art Café | Italian Coffee & Creativity</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="scripts.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── COLOR PALETTE & VARIABLES ─── */
+    :root {
+      --espresso: #2B1E16;      
+      --crema: #F9F6F0;         
+      --terracotta: #D36B46;    
+      --terracotta-dark: #B55836;
+      --olive: #a3bc96;         /* Updated Green */
+      --sand: #E8E2D5;          
+      
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* ─── CUSTOM HIGHLIGHT ─── */
+    ::selection {
+      background-color: var(--olive);
+      color: var(--espresso);
+    }
+    ::-moz-selection {
+      background-color: var(--olive);
+      color: var(--espresso);
+    }
+
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--espresso);
+      background-color: var(--crema);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hide normal cursor on devices with a fine pointer */
+    @media (pointer: fine) {
+      body, a, button, input, textarea {
+        cursor: none !important;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      margin-bottom: 1rem;
+      color: var(--espresso);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--terracotta);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    /* ─── SPA PAGE LOGIC ─── */
+    .page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      min-height: 100vh;
+      padding-top: 80px; 
+    }
+
+    .page.active {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── BUTTONS & CLICK EFFECTS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn-primary {
+      background-color: var(--terracotta);
+      color: #fff;
+      border: 2px solid var(--terracotta);
+    }
+
+    .btn-primary::before, .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: var(--espresso);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease-in-out;
+      z-index: -1;
+    }
+
+    .btn-primary:hover::before, .btn-outline:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn-primary:hover {
+      border-color: var(--espresso);
+      color: var(--crema);
+      box-shadow: 0 8px 20px rgba(43, 30, 22, 0.2);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--espresso);
+      border: 2px solid var(--espresso);
+    }
+
+    .btn-outline.light {
+      color: var(--crema);
+      border-color: var(--crema);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--espresso);
+      color: var(--crema);
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: all 0.4s ease;
+      background-color: rgba(43, 30, 22, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo img {
+      height: 55px;
+      width: auto;
+      filter: brightness(0) invert(1); /* Makes the crest white for the dark nav */
+      transition: transform 0.4s cubic-bezier(0.3, 2, 0.4, 1);
+    }
+    
+    .logo:hover img {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--crema);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 50%;
+      background-color: var(--olive);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--olive);
+    }
+
+    .mobile-toggle {
+      display: none;
+      color: var(--crema);
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      z-index: 101;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(rgba(43, 30, 22, 0.65), rgba(43, 30, 22, 0.9)), 
+                  url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+      margin-top: -80px;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      color: var(--crema);
+      max-width: 800px;
+      transform: translateY(20px);
+      animation: fadeUp 1s cubic-bezier(0.5, 0, 0, 1) forwards;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      color: var(--olive);
+      font-style: italic;
+    }
+
+    .hero-text {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── ABOUT / HOME SECTIONS ─── */
+    .about {
+      padding: 8rem 0;
+      background-color: var(--crema);
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      border-radius: 8px;
+      box-shadow: -20px 20px 0 var(--sand);
+      transition: transform 0.1s linear; /* Fast for parallax JS */
+      will-change: transform;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: -15px; right: -15px; bottom: 15px; left: 15px;
+      border: 2px solid var(--olive);
+      border-radius: 8px;
+      z-index: -1;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #4A3F35;
+    }
+
+    .home-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .action-card {
+      background-color: var(--sand);
+      padding: 3rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: none;
+    }
+
+    .action-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      background-color: #fff;
+    }
+
+    .action-card i {
+      font-size: 2.5rem;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+    }
+
+    .action-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ─── MENUS (FOOD & DRINKS) ─── */
+    .menu-page {
+      padding: 4rem 0 8rem;
+      background-color: var(--crema);
+    }
+
+    .page-header {
+      padding: 6rem 0 4rem;
+      background-color: var(--sand);
+      text-align: center;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Search Bar */
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      padding-left: 3rem;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: var(--espresso);
+      background-color: var(--sand);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--olive);
+      background-color: #fff;
+      box-shadow: 0 10px 20px rgba(163, 188, 150, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--terracotta);
+      font-size: 1.1rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 4rem;
+    }
+
+    .menu-category h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--espresso);
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--olive);
+      display: inline-block;
+    }
+
+    .menu-item {
+      margin-bottom: 1.8rem;
+      padding: 1.5rem;
+      background-color: #fff;
+      border-radius: 8px;
+      transition: all 0.4s ease;
+      border-left: 4px solid var(--sand);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .menu-item:hover {
+      transform: translateX(10px);
+      border-left-color: var(--olive);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+      gap: 1rem;
+    }
+
+    .menu-item-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--espresso);
+    }
+
+    .menu-item-name.highlight {
+      color: var(--terracotta);
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-style: italic;
+    }
+
+    .menu-item-price {
+      font-weight: 700;
+      color: var(--espresso);
+      font-family: var(--font-sans);
+      background-color: var(--olive);
+      color: #fff;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    .menu-item-desc {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .dietary {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-left: 0.5rem;
+      vertical-align: super;
+    }
+
+    /* ─── ART CAFE SECTION (OWN PAGE) ─── */
+    .art-cafe-page {
+      background-color: var(--espresso);
+      color: var(--crema);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      padding-bottom: 8rem;
+    }
+
+    .art-cafe-page::before, .art-cafe-page::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(50px);
+      transition: transform 0.1s linear; /* Parallax ready */
+      will-change: transform;
+    }
+
+    .art-cafe-page::before {
+      top: 10%; right: 10%;
+      width: 400px; height: 400px;
+      background: var(--terracotta);
+    }
+
+    .art-cafe-page::after {
+      bottom: 10%; left: 5%;
+      width: 500px; height: 500px;
+      background: var(--olive);
+    }
+
+    .art-header {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .art-header .section-title {
+      color: var(--crema);
+      font-size: clamp(3rem, 6vw, 4.5rem);
+    }
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      margin-top: 2rem;
+    }
+
+    .ticket-card {
+      background-color: var(--crema);
+      color: var(--espresso);
+      padding: 4rem 3rem;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transform: rotate(2deg);
+    }
+
+    .ticket-card:hover {
+      transform: translateY(-10px) rotate(0deg);
+      box-shadow: 0 40px 70px rgba(0,0,0,0.6);
+    }
+
+    .ticket-card::before, .ticket-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40px; height: 40px;
+      background-color: var(--espresso);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .ticket-card::before { left: -20px; }
+    .ticket-card::after { right: -20px; }
+
+    .ticket-header {
+      text-align: center;
+      border-bottom: 3px dashed #ccc;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .ticket-header h4 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--terracotta);
+    }
+
+    .ticket-detail {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .ticket-detail i {
+      color: var(--olive);
+      font-size: 1.5rem;
+      width: 30px;
+      text-align: center;
+    }
+
+    .ticket-price {
+      text-align: center;
+      font-size: 2rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--terracotta);
+      margin: 2rem 0;
+      background: var(--sand);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .art-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .art-gallery img {
+      border-radius: 8px;
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+      transition: transform 0.4s;
+    }
+    .art-gallery img:hover {
+      transform: scale(1.05);
+      z-index: 2;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background-color: #1A120A;
+      color: #A49A8F;
+      padding: 5rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand img {
+      height: 60px;
+      margin-bottom: 1.5rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.8;
+    }
+
+    .footer-heading {
+      color: var(--crema);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-contact li {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: color 0.3s;
+    }
+
+    .footer-contact li a:hover {
+      color: var(--olive);
+    }
+    
+    .footer-contact i {
+      margin-top: 4px;
+      color: var(--terracotta);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 2rem;
+      font-size: 0.85rem;
+    }
+
+    /* ─── CUSTOM CURSOR STYLES ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background-color: var(--terracotta);
+      position: fixed; top: 0; left: 0;
+      border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
+    }
+
+    .cursor-outline {
+      width: 40px; height: 40px;
+      border: 2px solid var(--terracotta);
+      position: fixed; top: 0; left: 0;
+      border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+    }
+
+    /* Cursor Hover States */
+    body.hovering .cursor-dot {
+      width: 12px; height: 12px;
+      background-color: transparent;
+    }
+    body.hovering .cursor-outline {
+      width: 65px; height: 65px;
+      background-color: rgba(163, 188, 150, 0.15); /* Olive wash */
+      border-color: var(--olive);
+    }
+
+    /* Cursor Click Effect */
+    body.clicking .cursor-outline {
+      transform: translate(-50%, -50%) scale(0.6);
+      background-color: rgba(211, 107, 70, 0.4);
+      border-color: var(--terracotta);
+    }
+    body.clicking .cursor-dot {
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    @media (max-width: 900px) {
+      .cursor-dot, .cursor-outline { display: none !important; }
+      .home-cards, .about-grid, .art-grid, .footer-grid, .art-gallery { grid-template-columns: 1fr; }
+      .mobile-toggle { display: block; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background-color: var(--espresso);
+        flex-direction: column; align-items: center;
+        padding: 2rem 0; gap: 1.5rem;
+        transform: translateY(-150%);
+        opacity: 0; visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      .nav-links.active {
+        transform: translateY(0); opacity: 1; visibility: visible;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Loader -->
-  <div class="site-loader" aria-hidden="false" id="siteLoader">
-    <div class="loader-ring" role="status" aria-label="Loading Fazenda website"></div>
-  </div>
 
-  <!-- Custom cursor elements -->
-  <div class="cursor cursor-outline" aria-hidden="true"></div>
-  <div class="cursor cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
 
-  <!-- Header / Nav -->
-  <header class="site-header" role="banner">
-    <div class="container nav-inner">
-      <a class="logo" href="#home" aria-label="Fazenda home">Fazenda</a>
-      <nav role="navigation" aria-label="Primary navigation">
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#featured">Menu</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#catering">Catering</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" data-target="home" class="logo spa-link">
+        <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Crest Logo">
+      </a>
+      
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#" data-target="home" class="spa-link active">Home</a></li>
+        <li><a href="#" data-target="food" class="spa-link">Food Menu</a></li>
+        <li><a href="#" data-target="drinks" class="spa-link">Drinks</a></li>
+        <li><a href="#" data-target="art" class="spa-link">Art Café</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
-  <main id="home">
-    <!-- HERO -->
-    <section id="hero" class="hero reveal" aria-labelledby="hero-heading">
-      <div class="container hero-content">
-        <p class="eyebrow">East London · Artisan Coffee</p>
-        <h1 id="hero-heading" class="hero-title">Italian Craft. Modern Comfort.</h1>
-        <p class="hero-sub">Warm cream tones, slow-roasted espresso and carefully curated deli plates — Fazenda is a neighbourhood ritual.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary ripple" href="#featured">View Menu</a>
-          <a class="btn btn-sage ripple" href="#catering">Book Catering</a>
-          <a class="btn btn-outline ripple" href="#contact">Find Us</a>
-        </div>
-      </div>
-      <picture class="hero-photo" aria-hidden="true">
-        <source srcset="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1400&auto=format&fit=crop" media="(min-width:900px)">
-        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" alt="Barista pouring espresso in warm cafe interior" loading="lazy">
-      </picture>
-    </section>
+  <div id="app">
 
-    <!-- ABOUT -->
-    <section id="about" class="section reveal" aria-labelledby="about-heading">
-      <div class="container about-grid">
-        <div class="about-copy">
-          <span class="section-subtitle">Our Story</span>
-          <h2 id="about-heading" class="section-title">Family-run. Taste-first.</h2>
-          <p class="section-copy">From Spitalfields to Harrow Place — Fazenda is a family café grounded in Italian coffee rituals and honest, seasonal food. We serve handcrafted espresso, house-baked pastries and deli plates prepared daily.</p>
-          <ul class="qualities" aria-hidden="false">
-            <li><strong>Quality</strong><span>Single-origin beans & precise extraction</span></li>
-            <li><strong>Freshness</strong><span>Daily-baked pastries & seasonal plates</span></li>
-            <li><strong>Hospitality</strong><span>Warm, attentive service that feels like home</span></li>
-          </ul>
-        </div>
-        <div class="about-photo">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=700&auto=format&fit=crop" alt="Barista at Fazenda preparing coffee" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED MENU -->
-    <section id="featured" class="section" aria-labelledby="featured-heading">
-      <div class="container">
-        <div class="section-intro reveal">
-          <span class="section-subtitle">Featured Menu</span>
-          <h2 id="featured-heading" class="section-title">Deli plates, pastries and espresso</h2>
-          <p class="section-copy">Handmade favourites, perfect for takeaway or lingering at a corner table.</p>
-        </div>
-
-        <div class="menu-grid">
-          <article class="menu-card reveal">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop" alt="Focaccia with prosciutto" loading="lazy">
-            <div class="menu-body">
-              <h3 class="menu-title">Focaccia Parma <span class="badge">Popular</span></h3>
-              <p class="menu-desc">Prosciutto di Parma, buffalo mozzarella and peppery rocket on house focaccia.</p>
-              <div class="menu-meta"><span class="price">£6.50</span></div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" alt="Italian cornetti pastry" loading="lazy">
-            <div class="menu-body">
-              <h3 class="menu-title">Italian Cornetti</h3>
-              <p class="menu-desc">Flaky, buttery and baked fresh each morning — plain or filled.</p>
-              <div class="menu-meta"><span class="price">£3.00</span></div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal">
-            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop" alt="Tiramisu slice" loading="lazy">
-            <div class="menu-body">
-              <h3 class="menu-title">Antonio’s Tiramisu Cake <span class="badge">Signature</span></h3>
-              <p class="menu-desc">Classic tiramisu flavours layered with house mascarpone.</p>
-              <div class="menu-meta"><span class="price">£5.50</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- REVIEWS (slider) -->
-    <section id="reviews" class="section reveal" aria-labelledby="reviews-heading">
-      <div class="container">
-        <span class="section-subtitle">Customer Reviews</span>
-        <h2 id="reviews-heading" class="section-title">Loved by locals</h2>
-        <div class="reviews-slider" aria-live="polite">
-          <button class="slider-btn prev" aria-label="Previous review">‹</button>
-          <div class="slides" role="list">
-            <blockquote class="slide" role="listitem">
-              <p>Best coffee in the area — strong, balanced and served with a smile.</p>
-              <footer>— Maya · <span class="rating">★★★★★</span></footer>
-            </blockquote>
-            <blockquote class="slide" role="listitem">
-              <p>The focaccia is exceptional and the staff are so welcoming.</p>
-              <footer>— Alex · <span class="rating">★★★★★</span></footer>
-            </blockquote>
-            <blockquote class="slide" role="listitem">
-              <p>Lovely pastries and a calm space to work — highly recommended.</p>
-              <footer>— Sofia · <span class="rating">★★★★☆</span></footer>
-            </blockquote>
+    <div id="view-home" class="page active">
+      <header class="hero">
+        <div class="container hero-content">
+          <span class="section-subtitle" style="color: var(--olive);">Est. London</span>
+          <h1 class="hero-title">Authentic Italian Taste.<br><em>Creative Spirit.</em></h1>
+          <p class="hero-text">A lovely little family-run Italian deli and coffee shop by day, and a vibrant creative studio by night. Tucked away near Liverpool Street, where passion meets the canvas.</p>
+          <div class="hero-buttons">
+            <a href="#" data-target="food" class="btn btn-primary spa-link"><i class="fa-solid fa-utensils"></i> Our Menus</a>
+            <a href="#" data-target="art" class="btn btn-outline light spa-link"><i class="fa-solid fa-palette"></i> Join Art Café</a>
           </div>
-          <button class="slider-btn next" aria-label="Next review">›</button>
+        </div>
+      </header>
+
+      <section id="about" class="about">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-image reveal">
+              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" alt="Barista pouring coffee" class="parallax-img" data-speed="2">
+            </div>
+            <div class="about-text reveal">
+              <span class="section-subtitle">Family Roots</span>
+              <h2 class="section-title">From Spitalfields to Harrow Place.</h2>
+              <p>Brought to London many years ago, Fazenda is an independent, family-run business led by Antonio and Luca. We started our journey in Spitalfields at Leyden Street, pouring our passion for traditional Italian hospitality into every cup.</p>
+              <p>Today, located just steps from Liverpool Street, we continue to serve rich, aromatic coffees, deli-style lunches, and signature cakes that are nothing short of irresistible.</p>
+              <p>But we are more than just a café. We believe in community. That’s why our doors stay open on Mondays for artists, thinkers, and friends to gather, create, and connect.</p>
+            </div>
+          </div>
+
+          <div class="home-cards reveal">
+            <div class="action-card spa-link" data-target="food">
+              <i class="fa-solid fa-pizza-slice"></i>
+              <h3>Deli & Bakery</h3>
+              <p>Explore our daily rotation of fresh focaccia, pasta, and Sicilian dolci.</p>
+              <span class="btn btn-outline" style="margin-top: 1rem;">View Food</span>
+            </div>
+            <div class="action-card spa-link" data-target="art">
+              <i class="fa-solid fa-paintbrush"></i>
+              <h3>The Art Café</h3>
+              <p>Weekly open-studio sessions. Bring your canvas, we’ll bring the wine.</p>
+              <span class="btn btn-outline" style="margin-top: 1rem;">Discover More</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="view-food" class="page">
+      <div class="page-header">
+        <div class="container reveal">
+          <span class="section-subtitle">Fazenda Deli</span>
+          <h2 class="section-title">Artisan Food Menu</h2>
+          <p>Freshly baked focaccia, traditional antipasti, and irresistible dolci crafted daily.</p>
         </div>
       </div>
-    </section>
 
-    <!-- CATERING -->
-    <section id="catering" class="section reveal" aria-labelledby="catering-heading">
-      <div class="container catering-grid">
-        <div class="catering-copy">
-          <span class="section-subtitle">Catering & Private Hire</span>
-          <h2 id="catering-heading" class="section-title">Bring Fazenda to your event</h2>
-          <p class="section-copy">We offer office lunches, corporate catering and intimate private hire — all with our signature Italian flavours and warm service.</p>
-          <ul class="event-types">
-            <li>Office lunches</li>
-            <li>Product launches</li>
-            <li>Private dinners</li>
+      <section class="menu-page" style="padding-top: 0;">
+        <div class="container">
+          <div class="search-container reveal">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" id="food-search" class="search-input" placeholder="Search for pasta, mortadella, cake...">
+          </div>
+
+          <div class="menu-grid" id="food-menu-container">
+            <div class="menu-category reveal">
+              <h3>Panini & Focaccia</h3>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">La Mortadella</span>
+                  <span class="menu-item-price">£8.50</span>
+                </div>
+                <p class="menu-item-desc">Bologna mortadella, crushed Sicilian pistachio, fresh burrata on house-baked focaccia.</p>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Il Classico Prosciutto</span>
+                  <span class="menu-item-price">£9.00</span>
+                </div>
+                <p class="menu-item-desc">Prosciutto di Parma, wild rocket, Parmigiano Reggiano shavings, fig jam.</p>
+              </div>
+            </div>
+
+            <div class="menu-category reveal" style="transition-delay: 0.1s;">
+              <h3>Pasta & Insalate</h3>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Truffle Mushroom Ravioli <span class="dietary">V</span></span>
+                  <span class="menu-item-price">£12.50</span>
+                </div>
+                <p class="menu-item-desc">Handmade ravioli filled with wild mushrooms and ricotta in a light truffle butter sage sauce.</p>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Nonna's Lasagna</span>
+                  <span class="menu-item-price">£11.00</span>
+                </div>
+                <p class="menu-item-desc">Traditional rich beef and pork ragù, creamy béchamel, baked to golden perfection.</p>
+              </div>
+            </div>
+
+            <div class="menu-category reveal" style="transition-delay: 0.2s;">
+              <h3>Dolci</h3>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name highlight">Antonio's Tiramisu</span>
+                  <span class="menu-item-price">£6.50</span>
+                </div>
+                <p class="menu-item-desc">Savoiardi dipped in our espresso, layered with rich mascarpone cream and dusted with dark cocoa.</p>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Sicilian Cannoli</span>
+                  <span class="menu-item-price">£4.50</span>
+                </div>
+                <p class="menu-item-desc">Crispy pastry shells filled with sweetened sheep's milk ricotta and dark chocolate chips.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="view-drinks" class="page">
+      <div class="page-header">
+        <div class="container reveal">
+          <span class="section-subtitle">Bar & Caffè</span>
+          <h2 class="section-title">Drinks Menu</h2>
+          <p>From morning espresso to evening Aperol Spritz.</p>
+        </div>
+      </div>
+
+      <section class="menu-page" style="padding-top: 0;">
+        <div class="container">
+          <div class="search-container reveal">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" id="drinks-search" class="search-input" placeholder="Search for espresso, wine, spritz...">
+          </div>
+
+          <div class="menu-grid" id="drinks-menu-container">
+            <div class="menu-category reveal">
+              <h3>The Espresso Bar</h3>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Classic Espresso</span>
+                  <span class="menu-item-price">£2.80</span>
+                </div>
+                <p class="menu-item-desc">Rich, aromatic, and traditionally pulled single shot.</p>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Pistachio Mocha</span>
+                  <span class="menu-item-price">£4.50</span>
+                </div>
+                <p class="menu-item-desc">Our house specialty: espresso, rich chocolate, steamed milk, and pure pistachio paste.</p>
+              </div>
+            </div>
+
+            <div class="menu-category reveal" style="transition-delay: 0.1s;">
+              <h3>Aperitivo</h3>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name highlight">Aperol Spritz</span>
+                  <span class="menu-item-price">£9.00</span>
+                </div>
+                <p class="menu-item-desc">Aperol, Prosecco, a splash of soda water, garnished with a fresh orange slice.</p>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">Classic Negroni</span>
+                  <span class="menu-item-price">£10.50</span>
+                </div>
+                <p class="menu-item-desc">Equal parts Gin, Campari, and Sweet Vermouth. Stirred, not shaken.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="view-art" class="page art-cafe-page">
+      <div class="container">
+        <div class="art-header reveal">
+          <span class="section-subtitle" style="color: var(--olive);">Creative Community</span>
+          <h2 class="section-title">Welcome to the <em>Art Café</em></h2>
+          <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; opacity: 0.9;">"Making art is good, making it with others is better."</p>
+        </div>
+
+        <div class="art-grid">
+          <div class="reveal">
+            <h3 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1.5rem;">Open Studio Nights</h3>
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">Every Monday evening, Fazenda transforms. We push the tables together, bring out the supplies, and host our open studio sessions. Whether you're into collage, painting, or just want to doodle while sipping a glass of wine with the local community, there is a seat for you.</p>
+            <p style="margin-bottom: 2.5rem; font-size: 1.1rem; line-height: 1.8;">No prior experience is necessary. We believe everyone has a creative spark that just needs the right environment—and the right espresso—to shine.</p>
+            <a href="https://eventbrite.com" target="_blank" class="btn btn-primary"><i class="fa-solid fa-ticket"></i> Book on Eventbrite</a>
+          </div>
+
+          <div class="ticket-card reveal" style="transition-delay: 0.2s;">
+            <div class="ticket-header">
+              <h4>Art Café x Fazenda</h4>
+              <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-top: 0.5rem; font-weight: 700; color: #888;">Weekly Creative Session</p>
+            </div>
+            
+            <div class="ticket-detail">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Every Monday Evening</span>
+            </div>
+            <div class="ticket-detail">
+              <i class="fa-regular fa-clock"></i>
+              <span>18:30 – 20:30</span>
+            </div>
+            <div class="ticket-detail">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>9 Harrow Place, London E1 7DB</span>
+            </div>
+
+            <div class="ticket-price">
+              £15.00 <br>
+              <span style="font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; color: var(--espresso); opacity: 0.8; display: block; margin-top: 0.5rem;">(Includes a complimentary drink & basic supplies)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-gallery reveal" style="margin-top: 8rem;">
+           <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800&auto=format&fit=crop" alt="Paints and brushes" class="parallax-img" data-speed="1.5">
+           <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Abstract painting process" class="parallax-img" data-speed="-1.5">
+        </div>
+      </div>
+    </div>
+
+  </div> <footer id="location">
+    <div class="container reveal">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Logo">
+          <p>A lovely little Italian food & coffee shop near Liverpool Street. Built on family tradition, fueled by community and creativity.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-heading">Visit Us</h4>
+          <ul class="footer-contact" style="list-style: none;">
+            <li><i class="fa-solid fa-map-pin"></i> <span>9 Harrow Place<br>London E1 7DB<br>UK</span></li>
+            <li><i class="fa-regular fa-clock"></i> <span>Tue – Sat: 8:00 am – 4:00 pm<br>Mon: 8:00 am - 3:00 pm <br><em>(Art Café 18:30 - 20:30)</em></span></li>
           </ul>
         </div>
-        <form class="catering-form" id="cateringForm" aria-label="Catering enquiry form">
-          <label for="name">Name</label>
-          <input id="name" name="name" required />
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-          <label for="date">Date</label>
-          <input id="date" name="date" type="date" />
-          <label for="people">Headcount</label>
-          <input id="people" name="people" type="number" min="1" />
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4"></textarea>
-          <button class="btn btn-primary ripple" type="submit">Send Enquiry</button>
-          <div id="formMessage" role="status" aria-live="polite" class="form-message"></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="section reveal" aria-labelledby="gallery-heading">
-      <div class="container">
-        <span class="section-subtitle">Gallery</span>
-        <h2 id="gallery-heading" class="section-title">Moments at Fazenda</h2>
-        <div class="masonry" aria-hidden="false">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="Coffee cup closeup" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1541698444083-023c97d3f4b6?q=80&w=800&auto=format&fit=crop" alt="Interior of cafe" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=800&auto=format&fit=crop" alt="Baked pastry" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop" alt="Friends at table" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section reveal" aria-labelledby="contact-heading">
-      <div class="container contact-grid">
+        
         <div>
-          <span class="section-subtitle">Contact</span>
-          <h2 id="contact-heading" class="section-title">Visit or get in touch</h2>
-          <p class="section-copy">9 Harrow Place, London E1 7DB</p>
-          <p class="section-copy">Mon - Sat: 9:00 – 15:00<br>Monday evenings: community sessions</p>
-          <p class="section-copy">Phone: <a href="tel:+442073750577">+44 20 7375 0577</a><br>Email: <a href="mailto:ciao@fazenda.london">ciao@fazenda.london</a></p>
-          <p class="section-copy"><a class="btn btn-outline ripple" href="https://www.google.com/maps/search/9+Harrow+Place+London" target="_blank" rel="noreferrer">Open in Maps</a></p>
-        </div>
-        <div class="map-wrap">
-          <iframe title="Fazenda location" src="https://www.google.com/maps?q=9+Harrow+Place+London&output=embed" loading="lazy" aria-hidden="false"></iframe>
+          <h4 class="footer-heading">Get in Touch</h4>
+          <ul class="footer-contact" style="list-style: none;">
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:ciao@fazenda.london">ciao@fazenda.london</a></li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+442073750577">+44 20 7375 0577</a></li>
+            <li><i class="fa-brands fa-instagram"></i> <a href="#">@fazenda.london</a></li>
+          </ul>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="container footer-grid">
-      <div>
-        <p class="footer-heading">Fazenda</p>
-        <p class="footer-copy">Italian-inspired coffee & deli near Liverpool Street.</p>
-      </div>
-      <div>
-        <p class="footer-heading">Explore</p>
-        <ul class="footer-contact">
-          <li><a href="#featured">Menu</a></li>
-          <li><a href="#catering">Catering</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer-heading">Legal</p>
-        <p class="footer-copy">&copy; 2026 Fazenda. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Fazenda Art Café. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
+
+  <script>
+    // ─── 1. Custom Cursor & Click Pulse Logic ───
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorOutline = document.getElementById('cursor-outline');
+    let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursorDot.style.left = `${mouseX}px`; cursorDot.style.top = `${mouseY}px`;
+    });
+
+    function animateCursor() {
+      let easing = 0.15;
+      outlineX += (mouseX - outlineX) * easing;
+      outlineY += (mouseY - outlineY) * easing;
+      cursorOutline.style.left = `${outlineX}px`; cursorOutline.style.top = `${outlineY}px`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Click effect pulse
+    window.addEventListener('mousedown', () => document.body.classList.add('clicking'));
+    window.addEventListener('mouseup', () => document.body.classList.remove('clicking'));
+
+    function attachHoverEvents() {
+      const interactables = document.querySelectorAll('a, button, .menu-item, input, .action-card');
+      interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+      });
+    }
+
+    // ─── 2. Mouse Parallax Logic ───
+    document.addEventListener('mousemove', (e) => {
+      // Parallax on specific images
+      document.querySelectorAll('.parallax-img').forEach(layer => {
+        const speed = layer.getAttribute('data-speed') || 2;
+        const x = (window.innerWidth - e.pageX * speed) / 150;
+        const y = (window.innerHeight - e.pageY * speed) / 150;
+        layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+      });
+      
+      // Background shape parallax in Art Cafe
+      const artPage = document.querySelector('.art-cafe-page');
+      if(artPage && artPage.classList.contains('active')) {
+        const x = (e.pageX) / 80;
+        const y = (e.pageY) / 80;
+        artPage.style.setProperty('--art-x', `${x}px`);
+        artPage.style.setProperty('--art-y', `${y}px`);
+        // We inject this dynamically into before/after via pseudo inline styles workaround
+        const style = document.getElementById('dynamic-parallax') || document.createElement('style');
+        style.id = 'dynamic-parallax';
+        style.innerHTML = `.art-cafe-page::before { transform: translate(${-x}px, ${-y}px); } .art-cafe-page::after { transform: translate(${x}px, ${y}px); }`;
+        document.head.appendChild(style);
+      }
+    });
+
+    // ─── 3. SPA Routing Logic ───
+    const links = document.querySelectorAll('.spa-link');
+    const pages = document.querySelectorAll('.page');
+    const navLinksContainer = document.getElementById('nav-links');
+    const mobileMenuToggle = document.getElementById('mobile-toggle');
+
+    function navigateTo(targetId) {
+      pages.forEach(page => page.classList.remove('active'));
+      const targetPage = document.getElementById(`view-${targetId}`);
+      if(targetPage) targetPage.classList.add('active');
+
+      document.querySelectorAll('#nav-links .spa-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.target === targetId) link.classList.add('active');
+      });
+
+      navLinksContainer.classList.remove('active');
+      mobileMenuToggle.querySelector('i').className = 'fa-solid fa-bars';
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      attachHoverEvents(); // Reattach cursor logic to new active elements
+      retriggerReveals();
+    }
+
+    // Delegate clicks to handle elements added dynamically or inside cards
+    document.body.addEventListener('click', (e) => {
+      const link = e.target.closest('.spa-link');
+      if (link) {
+        e.preventDefault();
+        const target = link.dataset.target;
+        if (target) navigateTo(target);
+      }
+    });
+
+    // ─── 4. Mobile Menu Toggle ───
+    mobileMenuToggle.addEventListener('click', () => {
+      navLinksContainer.classList.toggle('active');
+      const icon = mobileMenuToggle.querySelector('i');
+      icon.className = navLinksContainer.classList.contains('active') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+
+    // ─── 5. Live Menu Search ───
+    function setupMenuSearch(inputId, containerId) {
+      const searchInput = document.getElementById(inputId);
+      searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const categories = document.querySelectorAll(`#${containerId} .menu-category`);
+
+        categories.forEach(category => {
+          const items = category.querySelectorAll('.menu-item');
+          let hasVisible = false;
+          items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            item.style.display = text.includes(term) ? 'block' : 'none';
+            if(text.includes(term)) hasVisible = true;
+          });
+          category.style.display = hasVisible ? 'block' : 'none';
+        });
+      });
+    }
+    setupMenuSearch('food-search', 'food-menu-container');
+    setupMenuSearch('drinks-search', 'drinks-menu-container');
+
+    // ─── 6. Scroll Reveal Animations ───
+    function retriggerReveals() {
+      const revealElements = document.querySelectorAll('.page.active .reveal, footer .reveal');
+      const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+
+      const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target); 
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        el.classList.remove('active');
+        revealOnScroll.observe(el);
+      });
+    }
+
+    // Init
+    attachHoverEvents();
+    retriggerReveals();
+  </script>
 </body>
 </html>
