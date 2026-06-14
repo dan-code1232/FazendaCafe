@@ -149,12 +149,18 @@
       gap: 1rem;
     }
 
-    .logo img {
-      height: 55px; width: auto;
-      filter: brightness(0) invert(1);
+    .logo {
+      height: 55px;
       transition: transform 0.4s cubic-bezier(0.3, 2, 0.4, 1);
     }
-    .logo:hover img { transform: scale(1.08) rotate(-2deg); }
+    .logo:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .logo-svg {
+      height: 100%;
+      width: auto;
+    }
 
     .nav-right { display: flex; align-items: center; gap: 2rem; }
 
@@ -189,12 +195,12 @@
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     .hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--olive);   /* ← add this */
-}
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--olive);
+    }
     .hero-title em { color: var(--olive); font-style: italic; }
     .hero-text { font-size: 1.2rem; font-weight: 300; margin-bottom: 2.5rem; max-width: 600px; opacity: 0.9; }
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -322,7 +328,7 @@
     /* ─── FOOTER ─── */
     footer { background-color: #1A120A; color: #A49A8F; padding: 5rem 0 2rem; position: relative; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .footer-brand img { height: 60px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); opacity: 0.8; }
+    .footer-brand svg { height: 60px; margin-bottom: 1.5rem; opacity: 0.8; }
     .footer-heading { color: var(--crema); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; font-size: 0.9rem; }
     .footer-contact li { margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 1rem; transition: color 0.3s; }
     .footer-contact li a:hover { color: var(--olive); }
@@ -375,7 +381,40 @@
   <nav id="navbar">
     <div class="nav-container">
       <a href="#" data-target="home" class="logo spa-link">
-        <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Art Café — Home">
+        <svg class="logo-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2096.3 2096.3">
+          <style>.logo-st0{fill:#FDFDF5;}</style>
+          <g>
+            <path class="logo-st0" d="M862.4,1130.2c4.5,26,36.6,40.1,53.4,23.3l237.6-237.6c16.8-16.8,2.7-48.9-23.3-53.4c-65.8-11.5-141.5,12.4-198.4,69.3S851,1064.4,862.4,1130.2z"/>
+            <path class="logo-st0" d="M966.9,1234.7c65.8,11.5,141.5-12.4,198.4-69.3s80.8-132.6,69.3-198.4c-4.5-26-36.6-40.1-53.4-23.3l-237.6,237.6C926.8,1198,940.9,1230.1,966.9,1234.7z"/>
+            <path class="logo-st0" d="M1529.5,75H566.8L75,566.8v962.7l491.8,491.8h962.7l491.8-491.8V566.8L1529.5,75z M1466,117.6l-38.3,38.3h-38.5v26.7h11.8l-79.8,79.8h0.4l-32.4,32.3h-54.7v26.7h28l-78,78h-0.3l-34.2,34.2h-70.1v26.7h43.4l-75.4,75.4l-75.4-75.4h43.6v-26.7h-70.3l-34.2-34.2h-0.2l-78-78h28v-26.7h-54.7l-32.3-32.3h0.2L695,182.6h12v-26.7h-38.7L630,117.6L1466,117.6z M1048.1,605.8l442.4,442.4l-442.4,442.4l-442.4-442.4L1048.1,605.8z M577,134.6l436.2,436.2l-442.4,442.4L134.6,577L577,134.6z M397.9,910.1v276l-137,137v-550L397.9,910.1z M570.8,1083l442.4,442.4l-413.2,413.2v-261.3L812.9,1466H505.7l-77.4-149l-11,5.7l74.4,143.3H341.2L554,1677.3v261.3l-419.4-419.4L570.8,1083z M528.9,1542.9c0.6-0.6,1.2-1.2,1.8-1.8l35.6,68.4c-17.4,9.2-36.2,9-47.5-2C503.8,1592.6,508.3,1563.7,528.9,1542.9z M583.3,1596.7c-2.1,2.1-4.3,4.1-6.6,5.9l-36.1-69.4c18.8-12.3,40.4-13.3,52.7-1.1C608.4,1547,603.9,1575.9,583.3,1596.7z M630,1978.2l38.4-38.4H707v-26.7h-11.8L807.3,1801h54.3v-26.7H834l112.1-112.1h70.1v-26.7h-43.4l75.3-75.3l75.3,75.3H1080v26.7h70l112.1,112.1h-27.4v26.7h54.1l112.1,112.1h-11.7v26.7h38.3l38.4,38.4L630,1978.2z M1519.2,1961.7L1083,1525.4l442.4-442.4l436.2,436.2L1519.2,1961.7z M1698.5,1186.3V910l137-137v550.3L1698.5,1186.3z M1525.5,1013.2L1083,570.8L1494,159.9v246.8c-35,11-58.8,43.5-58.8,80.2l3.5,243.6c0,5.3,4.3,9.5,9.6,9.5c5.3,0,9.5-4.3,9.5-9.5l3.4-190.4h20.3l3.4,190.4c0.1,5.2,4.3,9.4,9.6,9.4h1.7c5.2,0,9.4-4.2,9.5-9.4l3.4-190.4h20.3l3.4,190.4c0.1,5.2,4.3,9.4,9.6,9.4h1.7c5.2,0,9.4-4.2,9.5-9.4l3.4-190.4h20.2l3.4,190.4c0.2,5.3,4.6,9.4,9.9,9.2c5-0.2,9.1-4.2,9.2-9.2l3.5-243.6c0-36.7-23.8-69.2-58.8-80.2V159.9L1961.7,577L1525.5,1013.2z"/>
+            <path class="logo-st0" d="M657.8,774.4L638.2,794l35.9,35.9L829,675L793.1,639l-26.1,26.1c-17.3,17.3-23.3,17.7-39.2,1.9L618.1,557.4l46.7-46.7l-35.4-35.5l-34.5,34.5c-11.7,11.7-14.5,11.7-24.7,1.4l-79.3-79.3c-23.3-23.3-26.6-45.3-8.9-63c8.9-8.9,22.5-17.3,33.2-11.3c-7.4,14.4-4.9,28.1,9.5,42.5c18.9,18.8,43.2,12.6,61.4-5.5c22.4-22.4,21.5-52.3-2.3-76.1c-35.5-35.5-90.5-27.1-139.5,21.9c-49.8,49.8-69.2,111.9,41.5,222.6c21.5,21.5,24.3,31.7,11.7,44.3l-22.9,22.9l35.9,35.9l39.2-39.2l102.6,102.7C671.8,749.2,673.2,759,657.8,774.4z"/>
+            <rect class="logo-st0" x="1080" y="1704.9" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="1704.9" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="1774.3" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="1774.3" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1234.7" y="1843.7" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="1843.7" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="1843.7" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="770.8" y="1843.7" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1234.7" y="1913.1" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="1913.1" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="1913.1" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="770.8" y="1913.1" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="364.1" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="364.1" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="294.7" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="294.7" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="770.8" y="225.3" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="225.3" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="225.3" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1234.7" y="225.3" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="770.8" y="155.9" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="925.4" y="155.9" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1080" y="155.9" width="90.8" height="26.7"/>
+            <rect class="logo-st0" x="1234.7" y="155.9" width="90.8" height="26.7"/>
+            <path class="logo-st0" d="M1438.5,1321.9l19.6-19.6l-35.9-35.9l-154.9,154.9l35.9,35.9l26.1-26.1c17.3-17.3,23.3-17.7,39.2-1.9l109.7,109.7l-46.7,46.7l35.5,35.5l34.5-34.5c11.7-11.7,14.5-11.7,24.7-1.4l79.3,79.3c23.3,23.3,26.6,45.3,8.9,63c-8.9,8.9-22.5,17.3-33.2,11.3c7.4-14.4,4.9-28.1-9.5-42.5c-18.9-18.9-43.2-12.6-61.4,5.5c-22.4,22.4-21.5,52.2,2.3,76c35.5,35.5,90.5,27.1,139.5-21.9c49.8-49.8,69.2-111.9-41.5-222.6c-21.5-21.5-24.3-31.7-11.7-44.3l22.9-22.9l-35.9-35.9l-39.2,39.2l-102.7-102.6C1424.5,1347.1,1423.1,1337.3,1438.5,1321.9z"/>
+          </g>
+        </svg>
       </a>
 
       <div class="nav-right">
@@ -646,7 +685,40 @@
     <div class="container reveal">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="http://www.fazenda.london/images/FAZ_crest.svg" alt="Fazenda Art Café Logo">
+          <svg class="logo-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2096.3 2096.3">
+            <style>.footer-logo-st0{fill:#FDFDF5;}</style>
+            <g>
+              <path class="footer-logo-st0" d="M862.4,1130.2c4.5,26,36.6,40.1,53.4,23.3l237.6-237.6c16.8-16.8,2.7-48.9-23.3-53.4c-65.8-11.5-141.5,12.4-198.4,69.3S851,1064.4,862.4,1130.2z"/>
+              <path class="footer-logo-st0" d="M966.9,1234.7c65.8,11.5,141.5-12.4,198.4-69.3s80.8-132.6,69.3-198.4c-4.5-26-36.6-40.1-53.4-23.3l-237.6,237.6C926.8,1198,940.9,1230.1,966.9,1234.7z"/>
+              <path class="footer-logo-st0" d="M1529.5,75H566.8L75,566.8v962.7l491.8,491.8h962.7l491.8-491.8V566.8L1529.5,75z M1466,117.6l-38.3,38.3h-38.5v26.7h11.8l-79.8,79.8h0.4l-32.4,32.3h-54.7v26.7h28l-78,78h-0.3l-34.2,34.2h-70.1v26.7h43.4l-75.4,75.4l-75.4-75.4h43.6v-26.7h-70.3l-34.2-34.2h-0.2l-78-78h28v-26.7h-54.7l-32.3-32.3h0.2L695,182.6h12v-26.7h-38.7L630,117.6L1466,117.6z M1048.1,605.8l442.4,442.4l-442.4,442.4l-442.4-442.4L1048.1,605.8z M577,134.6l436.2,436.2l-442.4,442.4L134.6,577L577,134.6z M397.9,910.1v276l-137,137v-550L397.9,910.1z M570.8,1083l442.4,442.4l-413.2,413.2v-261.3L812.9,1466H505.7l-77.4-149l-11,5.7l74.4,143.3H341.2L554,1677.3v261.3l-419.4-419.4L570.8,1083z M528.9,1542.9c0.6-0.6,1.2-1.2,1.8-1.8l35.6,68.4c-17.4,9.2-36.2,9-47.5-2C503.8,1592.6,508.3,1563.7,528.9,1542.9z M583.3,1596.7c-2.1,2.1-4.3,4.1-6.6,5.9l-36.1-69.4c18.8-12.3,40.4-13.3,52.7-1.1C608.4,1547,603.9,1575.9,583.3,1596.7z M630,1978.2l38.4-38.4H707v-26.7h-11.8L807.3,1801h54.3v-26.7H834l112.1-112.1h70.1v-26.7h-43.4l75.3-75.3l75.3,75.3H1080v26.7h70l112.1,112.1h-27.4v26.7h54.1l112.1,112.1h-11.7v26.7h38.3l38.4,38.4L630,1978.2z M1519.2,1961.7L1083,1525.4l442.4-442.4l436.2,436.2L1519.2,1961.7z M1698.5,1186.3V910l137-137v550.3L1698.5,1186.3z M1525.5,1013.2L1083,570.8L1494,159.9v246.8c-35,11-58.8,43.5-58.8,80.2l3.5,243.6c0,5.3,4.3,9.5,9.6,9.5c5.3,0,9.5-4.3,9.5-9.5l3.4-190.4h20.3l3.4,190.4c0.1,5.2,4.3,9.4,9.6,9.4h1.7c5.2,0,9.4-4.2,9.5-9.4l3.4-190.4h20.3l3.4,190.4c0.1,5.2,4.3,9.4,9.6,9.4h1.7c5.2,0,9.4-4.2,9.5-9.4l3.4-190.4h20.2l3.4,190.4c0.2,5.3,4.6,9.4,9.9,9.2c5-0.2,9.1-4.2,9.2-9.2l3.5-243.6c0-36.7-23.8-69.2-58.8-80.2V159.9L1961.7,577L1525.5,1013.2z"/>
+              <path class="footer-logo-st0" d="M657.8,774.4L638.2,794l35.9,35.9L829,675L793.1,639l-26.1,26.1c-17.3,17.3-23.3,17.7-39.2,1.9L618.1,557.4l46.7-46.7l-35.4-35.5l-34.5,34.5c-11.7,11.7-14.5,11.7-24.7,1.4l-79.3-79.3c-23.3-23.3-26.6-45.3-8.9-63c8.9-8.9,22.5-17.3,33.2-11.3c-7.4,14.4-4.9,28.1,9.5,42.5c18.9,18.8,43.2,12.6,61.4-5.5c22.4-22.4,21.5-52.3-2.3-76.1c-35.5-35.5-90.5-27.1-139.5,21.9c-49.8,49.8-69.2,111.9,41.5,222.6c21.5,21.5,24.3,31.7,11.7,44.3l-22.9,22.9l35.9,35.9l39.2-39.2l102.6,102.7C671.8,749.2,673.2,759,657.8,774.4z"/>
+              <rect class="footer-logo-st0" x="1080" y="1704.9" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="1704.9" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="1774.3" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="1774.3" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1234.7" y="1843.7" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="1843.7" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="1843.7" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="770.8" y="1843.7" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1234.7" y="1913.1" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="1913.1" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="1913.1" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="770.8" y="1913.1" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="364.1" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="364.1" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="294.7" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="294.7" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="770.8" y="225.3" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="225.3" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="225.3" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1234.7" y="225.3" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="770.8" y="155.9" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="925.4" y="155.9" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1080" y="155.9" width="90.8" height="26.7"/>
+              <rect class="footer-logo-st0" x="1234.7" y="155.9" width="90.8" height="26.7"/>
+              <path class="footer-logo-st0" d="M1438.5,1321.9l19.6-19.6l-35.9-35.9l-154.9,154.9l35.9,35.9l26.1-26.1c17.3-17.3,23.3-17.7,39.2-1.9l109.7,109.7l-46.7,46.7l35.5,35.5l34.5-34.5c11.7-11.7,14.5-11.7,24.7-1.4l79.3,79.3c23.3,23.3,26.6,45.3,8.9,63c-8.9,8.9-22.5,17.3-33.2,11.3c7.4-14.4,4.9-28.1-9.5-42.5c-18.9-18.9-43.2-12.6-61.4,5.5c-22.4,22.4-21.5,52.2,2.3,76c35.5,35.5,90.5,27.1,139.5-21.9c49.8-49.8,69.2-111.9-41.5-222.6c-21.5-21.5-24.3-31.7-11.7-44.3l22.9-22.9l-35.9-35.9l-39.2,39.2l-102.7-102.6C1424.5,1347.1,1423.1,1337.3,1438.5,1321.9z"/>
+            </g>
+          </svg>
           <p>A family-run Italian deli and coffee shop near Liverpool Street. Built on tradition, fueled by community and creativity.</p>
         </div>
 
