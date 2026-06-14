@@ -272,27 +272,32 @@
       z-index: 101;
     }
 
-    /* ─── HERO SECTION ─── */
-    .hero {
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      background: linear-gradient(rgba(43, 30, 22, 0.65), rgba(43, 30, 22, 0.9)), 
-                  url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
-      margin-top: -80px;
-      overflow: hidden;
-    }
+  .hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Important: keeps the moving background within the hero area */
+  margin-top: -80px;
+}
 
-    .hero-content {
-      color: var(--crema);
-      max-width: 800px;
-      transform: translateY(20px);
-      animation: fadeUp 1s cubic-bezier(0.5, 0, 0, 1) forwards;
-      position: relative;
-      z-index: 2;
-    }
+.hero-bg {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 120%; /* Extra height allows room for the background to shift */
+  background: linear-gradient(rgba(43, 30, 22, 0.65), rgba(43, 30, 22, 0.9)), 
+              url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center top/cover no-repeat;
+  z-index: 0;
+  will-change: transform; /* Signals the GPU to prepare for motion */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Ensures text stays on top of the image and the dark gradient */
+}
 
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
@@ -813,18 +818,19 @@
   <div id="app">
 
     <div id="view-home" class="page active">
-      <header class="hero">
-        <div class="container hero-content">
-          <span class="section-subtitle" style="color: var(--olive);">Est. London</span>
-          <h1 class="hero-title">Authentic Italian Taste.<br><em>Creative Spirit.</em></h1>
-          <p class="hero-text">A lovely little family-run Italian deli and coffee shop by day, and a vibrant creative studio by night. Tucked away near Liverpool Street, where passion meets the canvas.</p>
-          <div class="hero-buttons">
-            <a href="#" data-target="food" class="btn btn-primary spa-link"><i class="fa-solid fa-utensils"></i> Our Menus</a>
-            <a href="#" data-target="art" class="btn btn-outline light spa-link"><i class="fa-solid fa-palette"></i> Join Art Café</a>
-          </div>
-        </div>
-      </header>
-
+<header class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  
+  <div class="container hero-content">
+    <span class="section-subtitle" style="color: var(--olive);">Est. London</span>
+    <h1 class="hero-title">Authentic Italian Taste.<br><em>Creative Spirit.</em></h1>
+    <p class="hero-text">A lovely little family-run Italian deli and coffee shop by day, and a vibrant creative studio by night.</p>
+    <div class="hero-buttons">
+      <a href="#" data-target="food" class="btn btn-primary spa-link">Our Menus</a>
+      <a href="#" data-target="art" class="btn btn-outline light spa-link">Join Art Café</a>
+    </div>
+  </div>
+</header>
       <section id="about" class="about">
         <div class="container">
           <div class="about-grid">
@@ -862,7 +868,7 @@
       <div class="page-header">
         <div class="container reveal">
           <span class="section-subtitle">Fazenda Deli</span>
-          <h2 class="section-title">Artisan Food Menu</h2>
+          <h2 class="section-title">Food Menu</h2>
           <p>Freshly baked focaccia, traditional antipasti, and irresistible dolci crafted daily.</p>
         </div>
       </div>
@@ -1208,7 +1214,21 @@
         revealOnScroll.observe(el);
       });
     }
+  // Add this to your existing <script> section
+const heroBg = document.getElementById('hero-bg');
 
+window.addEventListener('scroll', () => {
+  requestAnimationFrame(() => {
+    const scrollPos = window.pageYOffset;
+    
+    // Only animate if in view
+    if (scrollPos < window.innerHeight) {
+      // Moves the image at a fraction of the scroll speed
+      // The '0.3' value makes it move slower (the smaller the number, the slower the parallax)
+      heroBg.style.transform = `translateY(${scrollPos * 0.3}px)`;
+    }
+  });
+});
     // Init
     attachHoverEvents();
     retriggerReveals();
